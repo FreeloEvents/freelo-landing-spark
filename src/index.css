@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +90,71 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-freelo-dark-purple text-freelo-light-text;
+    scroll-behavior: smooth;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(39, 18, 58, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #E93A7D, #9B87F5);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #D946EF, #7E69AB);
+  }
+}
+
+@layer components {
+  .shimmer-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-freelo-bright-pink via-freelo-soft-purple to-freelo-bright-pink bg-300% animate-text-shimmer;
+  }
+
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl;
+  }
+
+  .freelo-gradient-bg {
+    background: linear-gradient(135deg, #1A0B2E, #27123A);
+  }
+
+  .freelo-button {
+    @apply px-6 py-3 rounded-full font-bold transition-all duration-300 ease-in-out;
+    background: linear-gradient(90deg, #E93A7D, #D946EF);
+  }
+
+  .freelo-button:hover {
+    @apply shadow-lg transform -translate-y-1;
+    background: linear-gradient(90deg, #D946EF, #E93A7D);
+  }
+
+  .freelo-button-secondary {
+    @apply px-6 py-3 rounded-full border-2 font-bold transition-all duration-300 ease-in-out;
+    background: rgba(39, 18, 58, 0.7);
+    border-color: rgba(211, 70, 239, 0.4);
+  }
+
+  .freelo-button-secondary:hover {
+    @apply shadow-lg;
+    background: rgba(39, 18, 58, 0.9);
+    border-color: rgba(233, 58, 125, 0.8);
+  }
+
+  .freelo-card {
+    @apply bg-freelo-card-bg border border-white/10 rounded-2xl p-6 backdrop-blur-sm;
+    transition: all 0.3s ease;
+  }
+
+  .freelo-card:hover {
+    @apply border-white/20 shadow-lg;
+    transform: translateY(-5px);
   }
 }
