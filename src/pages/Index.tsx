@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { toast } from 'sonner';
 import Hero from '@/components/Hero';
 import Countdown from '@/components/Countdown';
 import WhyFreelo from '@/components/WhyFreelo';
@@ -12,9 +13,12 @@ import Benefits from '@/components/Benefits';
 import FAQ from '@/components/FAQ';
 import ContactUs from '@/components/ContactUs';
 import Footer from '@/components/Footer';
-import { toast } from 'sonner';
+import LanguageToggle from '@/components/LanguageToggle';
+import { useTranslation } from '@/utils/translations';
 
 const Index = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Welcome toast
     toast("Welcome to Freelo", {
@@ -53,6 +57,8 @@ const Index = () => {
           <div className="absolute top-[30%] -right-[50%] w-[100%] h-[50%] rounded-full bg-freelo-gradient-end opacity-5 blur-[80px]" />
           <div className="absolute bottom-0 left-[25%] w-[50%] h-[40%] rounded-full bg-freelo-gradient-mid opacity-5 blur-[80px]" />
         </div>
+        
+        <LanguageToggle />
 
         <div className="max-w-7xl mx-auto">
           <Hero />
