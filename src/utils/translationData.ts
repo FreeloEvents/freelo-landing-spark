@@ -1,5 +1,5 @@
 
-type TranslationKey = 
+export type TranslationKey = 
   | 'title'
   | 'subtitle'
   | 'emailPlaceholder'
@@ -400,34 +400,3 @@ export const translations: Translations = {
     en: "© Freelo " + new Date().getFullYear() + ". All rights reserved."
   }
 };
-
-// Create a language context
-import { createContext, useContext, useState, ReactNode } from 'react';
-
-type LanguageContextType = {
-  language: 'he' | 'en';
-  setLanguage: (lang: 'he' | 'en') => void;
-  t: (key: TranslationKey) => string;
-};
-
-export const LanguageContext = createContext<LanguageContextType>({
-  language: 'he',
-  setLanguage: () => {},
-  t: () => '',
-});
-
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<'he' | 'en'>('he');
-
-  const t = (key: TranslationKey): string => {
-    return translations[key][language];
-  };
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-};
-
-export const useTranslation = () => useContext(LanguageContext);
