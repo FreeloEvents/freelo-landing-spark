@@ -129,18 +129,18 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #E93A7D, #9B87F5);
+    background: linear-gradient(to bottom, #D91141, #8A2BE2);
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #D946EF, #7E69AB);
+    background: linear-gradient(to bottom, #D91141, #C1295F);
   }
 }
 
 @layer components {
   .shimmer-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-freelo-bright-pink via-freelo-soft-purple to-freelo-bright-pink bg-300% animate-text-shimmer;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-300% animate-text-shimmer;
   }
 
   .glass-panel {
@@ -153,24 +153,24 @@
 
   .freelo-button {
     @apply px-6 py-3 rounded-full font-bold transition-all duration-300 ease-in-out;
-    background: linear-gradient(90deg, #E93A7D, #D946EF);
+    background: linear-gradient(90deg, #D91141, #8A2BE2);
   }
 
   .freelo-button:hover {
     @apply shadow-lg transform -translate-y-1;
-    background: linear-gradient(90deg, #D946EF, #E93A7D);
+    background: linear-gradient(90deg, #8A2BE2, #D91141);
   }
 
   .freelo-button-secondary {
     @apply px-6 py-3 rounded-full border-2 font-bold transition-all duration-300 ease-in-out;
     background: rgba(39, 18, 58, 0.7);
-    border-color: rgba(211, 70, 239, 0.4);
+    border-color: rgba(138, 43, 226, 0.4);
   }
 
   .freelo-button-secondary:hover {
     @apply shadow-lg;
     background: rgba(39, 18, 58, 0.9);
-    border-color: rgba(233, 58, 125, 0.8);
+    border-color: rgba(217, 17, 65, 0.8);
   }
 
   .freelo-card {

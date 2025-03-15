@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 interface LogoProps {
@@ -30,7 +30,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 120 }) => {
       
       <motion.div className="absolute inset-0 flex items-center justify-center">
         <img 
-          src="/lovable-uploads/8f5234a1-e76d-4f5f-8a70-edaf61e974c0.png" 
+          src="/lovable-uploads/16d87f8c-612a-44bd-aecc-1da2a880a08f.png" 
           alt="Freelo Logo" 
           className="w-[85%] h-[85%] object-contain"
         />

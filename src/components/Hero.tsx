@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
     // Simulate API request
     setTimeout(() => {
       toast.success('תודה שנרשמת!', {
-        description: 'נעדכן אותך בחדשות של פרילו.',
+        description: 'נעדכן אותך בחדשות של Freelo.',
       });
       setEmail('');
       setIsLoading(false);
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
         variants={fadeIn('up', 0.4)}
         className="text-4xl md:text-6xl font-bold text-center mb-6 max-w-3xl"
       >
-        <MotionSpan className="shimmer-text font-extrabold">פרילו</MotionSpan>{" "}
+        <MotionSpan className="shimmer-text font-extrabold">Freelo</MotionSpan>{" "}
         היא הפלטפורמה שמאחדת אירועים אינטימיים ואלטרנטיביים
       </MotionH1>
       

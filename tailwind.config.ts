@@ -68,11 +68,11 @@ export default {
 				},
 				freelo: {
 					'dark-purple': '#1A0B2E',
-					'bright-pink': '#E93A7D',
-					'soft-purple': '#9B87F5',
-					'gradient-start': '#E93A7D',
-					'gradient-mid': '#D946EF',
-					'gradient-end': '#7E69AB',
+					'bright-pink': '#D91141', // Updated to red from logo
+					'soft-purple': '#8A2BE2', // Updated to purple from logo
+					'gradient-start': '#D91141', // Updated to red from logo
+					'gradient-mid': '#C1295F',  // Mix of red and purple
+					'gradient-end': '#8A2BE2',  // Updated to purple from logo
 					'card-bg': '#27123A',
 					'light-text': '#F4F4F4',
 				}

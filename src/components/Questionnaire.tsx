@@ -79,7 +79,7 @@ const Questionnaire: React.FC = () => {
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, string[]>>({});
   const [showConfetti, setShowConfetti] = useState(false);
 
   const handleNext = () => {
@@ -99,11 +99,34 @@ const Questionnaire: React.FC = () => {
     }
   };
 
-  const handleOptionSelect = (option: string) => {
-    setSelectedAnswers({
-      ...selectedAnswers,
-      [questions[currentQuestion].id]: option
-    });
+  const handleOptionToggle = (option: string) => {
+    const questionId = questions[currentQuestion].id;
+    const currentSelections = selectedAnswers[questionId] || [];
+    
+    // Check if option is already selected
+    if (currentSelections.includes(option)) {
+      // Remove the option
+      setSelectedAnswers({
+        ...selectedAnswers,
+        [questionId]: currentSelections.filter(item => item !== option)
+      });
+    } else {
+      // Add the option
+      setSelectedAnswers({
+        ...selectedAnswers,
+        [questionId]: [...currentSelections, option]
+      });
+    }
+  };
+
+  const isOptionSelected = (option: string) => {
+    const questionId = questions[currentQuestion].id;
+    return selectedAnswers[questionId]?.includes(option) || false;
+  };
+
+  const hasSelectedOptions = () => {
+    const questionId = questions[currentQuestion].id;
+    return (selectedAnswers[questionId]?.length || 0) > 0;
   };
 
   const isLastQuestion = currentQuestion === questions.length - 1;
@@ -158,21 +181,36 @@ const Questionnaire: React.FC = () => {
               {question.text}
             </h3>
             
-            <div className="space-y-3">
+            <div className="space-y-3 mb-2">
               {question.options.map((option, index) => (
                 <button
                   key={index}
-                  onClick={() => handleOptionSelect(option)}
-                  className={`w-full text-right p-4 rounded-xl transition-all ${
-                    selectedAnswers[question.id] === option
+                  onClick={() => handleOptionToggle(option)}
+                  className={`w-full flex items-center text-right p-4 rounded-xl transition-all ${
+                    isOptionSelected(option)
                       ? 'bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end text-white'
                       : 'bg-white/5 hover:bg-white/10 text-white'
                   }`}
                 >
-                  {option}
+                  <div className={`w-5 h-5 mr-3 rounded-sm border flex items-center justify-center ${
+                    isOptionSelected(option) 
+                      ? 'bg-white border-white' 
+                      : 'border-gray-400'
+                  }`}>
+                    {isOptionSelected(option) && (
+                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-freelo-gradient-start">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </div>
+                  <span className="flex-grow">{option}</span>
                 </button>
               ))}
             </div>
+            
+            <p className="text-sm text-gray-400 mb-4 text-center">
+              ניתן לבחור מספר אפשרויות
+            </p>
             
             <div className="flex justify-between mt-8">
               <button
@@ -191,11 +229,11 @@ const Questionnaire: React.FC = () => {
               <button
                 onClick={handleNext}
                 className={`flex items-center px-4 py-2 rounded-full ${
-                  selectedAnswers[question.id]
+                  hasSelectedOptions()
                     ? 'bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end text-white'
                     : 'bg-white/20 text-white cursor-not-allowed'
                 }`}
-                disabled={!selectedAnswers[question.id]}
+                disabled={!hasSelectedOptions()}
               >
                 {isLastQuestion ? 'סיום' : 'הבא'}
                 <ArrowRight className="w-4 h-4 mr-1" />

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, MessageCircle } from 'lucide-react';
+import { Mail, MessageCircle, Phone } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn, staggerContainer } from './motion';
 
 const ContactUs: React.FC = () => {
@@ -12,7 +12,13 @@ const ContactUs: React.FC = () => {
       link: "https://t.me/ENMeventsisrael"
     },
     {
-      icon: <Mail className="w-8 h-8 text-freelo-bright-pink" />,
+      icon: <Phone className="w-8 h-8 text-freelo-bright-pink" />,
+      title: "וואטסאפ",
+      value: "צרו קשר",
+      link: "https://tinyurl.com/FreeloWhatsappContact"
+    },
+    {
+      icon: <Mail className="w-8 h-8 text-freelo-gradient-mid" />,
       title: "אימייל",
       value: "enmisraelevents@gmail.com",
       link: "mailto:enmisraelevents@gmail.com"
@@ -45,7 +51,7 @@ const ContactUs: React.FC = () => {
         variants={fadeIn('up', 0.4)}
         className="max-w-3xl mx-auto freelo-card"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {contactMethods.map((method, index) => (
             <a
               key={index}
