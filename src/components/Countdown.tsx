@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { MotionDiv, MotionP, MotionH2, fadeIn } from './motion';
-import { useTranslation } from '@/utils/translations';
 
 type TimeLeft = {
   days: number;
@@ -11,7 +10,6 @@ type TimeLeft = {
 };
 
 const Countdown: React.FC = () => {
-  const { t, language } = useTranslation();
   const targetDate = new Date('June 1, 2025 00:00:00').getTime();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -48,13 +46,12 @@ const Countdown: React.FC = () => {
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
       className="py-16 px-4 relative"
-      dir={language === 'he' ? 'rtl' : 'ltr'}
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-12"
       >
-        {t('launchingIn')}
+        Launching in
       </MotionH2>
 
       <MotionDiv
@@ -62,10 +59,10 @@ const Countdown: React.FC = () => {
         className="flex flex-wrap justify-center gap-4 sm:gap-8"
       >
         {[
-          { value: timeLeft.days, label: t('days') },
-          { value: timeLeft.hours, label: t('hours') },
-          { value: timeLeft.minutes, label: t('minutes') },
-          { value: timeLeft.seconds, label: t('seconds') },
+          { value: timeLeft.days, label: 'Days' },
+          { value: timeLeft.hours, label: 'Hours' },
+          { value: timeLeft.minutes, label: 'Minutes' },
+          { value: timeLeft.seconds, label: 'Seconds' },
         ].map((item, index) => (
           <div
             key={index}
@@ -82,9 +79,7 @@ const Countdown: React.FC = () => {
         variants={fadeIn('up', 0.4)}
         className="text-center text-gray-300 mt-8"
       >
-        {language === 'he' 
-          ? "הצטרפו לרשימת ההמתנה שלנו היום כדי לקבל גישה מוקדמת בלעדית." 
-          : "Join our waitlist today to get exclusive early access."}
+        Join our waitlist today to get exclusive early access.
       </MotionP>
     </MotionDiv>
   );

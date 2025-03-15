@@ -3,18 +3,14 @@ import React from 'react';
 import { MotionDiv, MotionP, fadeIn } from './motion';
 import Logo from './Logo';
 import { Mail, MessageCircle } from 'lucide-react';
-import { useTranslation } from '@/utils/translations';
 
 const Footer: React.FC = () => {
-  const { t, language } = useTranslation();
-  
   return (
     <MotionDiv
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
       className="pt-8 pb-6 px-4 border-t border-white/10"
-      dir={language === 'he' ? 'rtl' : 'ltr'}
     >
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
@@ -45,7 +41,7 @@ const Footer: React.FC = () => {
           variants={fadeIn('up', 0.3)}
           className="text-center text-gray-400 text-sm"
         >
-          {t('copyrightText')}
+          &copy; Freelo {new Date().getFullYear()}. All rights reserved.
         </MotionP>
       </div>
     </MotionDiv>
