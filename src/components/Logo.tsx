@@ -16,18 +16,6 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 120 }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-freelo-gradient-start via-freelo-gradient-mid to-freelo-gradient-end rounded-full opacity-70"
-        animate={{ 
-          scale: [1, 1.05, 1],
-        }}
-        transition={{ 
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut" 
-        }}
-      />
-      
       <motion.div className="absolute inset-0 flex items-center justify-center">
         <img 
           src="/lovable-uploads/16d87f8c-612a-44bd-aecc-1da2a880a08f.png" 

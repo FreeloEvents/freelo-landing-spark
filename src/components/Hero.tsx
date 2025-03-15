@@ -36,21 +36,20 @@ const Hero: React.FC = () => {
         className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end opacity-20 blur-[80px] top-0 -z-10"
       />
       
-      <Logo className="mb-8" />
+      <Logo className="mb-12" />
       
       <MotionH1 
         variants={fadeIn('up', 0.4)}
-        className="text-4xl md:text-6xl font-bold text-center mb-6 max-w-3xl"
+        className="text-5xl md:text-6xl font-bold text-center mb-6 max-w-3xl"
       >
-        <MotionSpan className="shimmer-text font-extrabold">Freelo</MotionSpan>{" "}
-        היא הפלטפורמה שמאחדת אירועים אינטימיים ואלטרנטיביים
+        <span className="text-freelo-bright-pink">כל</span> <span className="text-[#ff56a9]">אירועי</span> <span className="text-freelo-soft-purple">הקהילה</span> <span className="text-white">במקום אחד</span>
       </MotionH1>
       
       <MotionP 
         variants={fadeIn('up', 0.5)}
-        className="text-xl text-center text-gray-300 mb-10 max-w-2xl"
+        className="text-xl text-center text-gray-300 mb-10 max-w-2xl leading-relaxed"
       >
-        הפלטפורמה המקיפה לגילוי והצטרפות לאירועי פוליאמוריה, BDSM, סווינגרים, פסטיבלים ומסיבות פרטיות הכי אקסקלוסיביים.
+        Freelo מרכזת עבורכם את כל האירועים מהקהילות הא-מונוגמיות, בדס״מ, סווינגרס והמיניות האלטרנטיבית – מסיבות במועדונים ועד סדנאות ומפגשים אינטימיים.
       </MotionP>
       
       <MotionDiv 
@@ -58,24 +57,24 @@ const Hero: React.FC = () => {
         className="w-full max-w-md"
       >
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full">
-          <Input
-            type="email"
-            placeholder="הזינו את כתובת האימייל שלכם"
-            className="h-12 rounded-full bg-white/10 border-white/20 text-white placeholder:text-gray-400 text-right"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
           <button 
             type="submit" 
             className="freelo-button h-12 px-6 py-2 whitespace-nowrap"
             disabled={isLoading}
           >
-            {isLoading ? 'נרשם...' : 'קבלו גישה מוקדמת'}
+            {isLoading ? 'נרשם...' : 'הירשמו עכשיו'}
           </button>
+          <Input
+            type="email"
+            placeholder="הכניסו את האימייל שלכם"
+            className="h-12 rounded-full bg-white/10 border-white/20 text-white placeholder:text-gray-400 text-right"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </form>
         <p className="text-center text-xs text-gray-400 mt-2">
-          אנו מכבדים את פרטיותכם ולעולם לא נשתף את המידע שלכם.
+          הנתונים שלכם נשמרים לצורכי גישה מוקדמת
         </p>
       </MotionDiv>
     </MotionDiv>
