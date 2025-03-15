@@ -49,7 +49,7 @@ const Countdown: React.FC = () => {
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
-        className="text-3xl md:text-4xl font-bold text-center mb-12"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12"
       >
         משיקים בעוד
       </MotionH2>
@@ -69,7 +69,7 @@ const Countdown: React.FC = () => {
             className="relative w-20 h-20 sm:w-28 sm:h-28 flex flex-col items-center justify-center bg-freelo-card-bg rounded-2xl border border-white/10"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-freelo-gradient-start to-freelo-gradient-end opacity-20 rounded-2xl" />
-            <span className="text-3xl sm:text-4xl font-bold relative z-10">{item.value}</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl font-bold relative z-10">{item.value}</span>
             <span className="text-xs sm:text-sm text-gray-300 relative z-10">{item.label}</span>
           </div>
         ))}
@@ -77,7 +77,7 @@ const Countdown: React.FC = () => {
 
       <MotionP
         variants={fadeIn('up', 0.4)}
-        className="text-center text-gray-300 mt-8"
+        className="text-xs sm:text-sm md:text-base text-center text-gray-300 mt-8"
       >
         הצטרפו לרשימת ההמתנה שלנו היום כדי לקבל גישה מוקדמת בלעדית.
       </MotionP>

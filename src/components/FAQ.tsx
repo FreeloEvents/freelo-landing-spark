@@ -48,14 +48,14 @@ const FAQ: React.FC = () => {
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
-        className="text-3xl md:text-4xl font-bold text-center mb-2"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2"
       >
         שאלות <span className="shimmer-text">נפוצות</span>
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
-        className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
+        className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
         מצאו תשובות לשאלות הנפוצות ביותר
       </MotionP>
@@ -74,7 +74,7 @@ const FAQ: React.FC = () => {
               <Plus 
                 className={`w-5 h-5 transition-transform ${openIndex === index ? 'rotate-45' : 'rotate-0'}`}
               />
-              <h3 className="text-lg font-semibold">{faq.question}</h3>
+              <h3 className="text-base sm:text-lg font-semibold">{faq.question}</h3>
             </button>
             
             <div
@@ -82,7 +82,7 @@ const FAQ: React.FC = () => {
                 openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
               }`}
             >
-              <p className="py-4 px-1 text-gray-300 text-right">
+              <p className="py-4 px-1 text-xs sm:text-sm text-gray-300 text-right">
                 {faq.answer}
               </p>
             </div>
@@ -92,7 +92,7 @@ const FAQ: React.FC = () => {
       
       <MotionP
         variants={fadeIn('up', 0.6)}
-        className="text-center text-gray-400 mt-8 max-w-2xl mx-auto"
+        className="text-xs sm:text-sm text-center text-gray-400 mt-8 max-w-2xl mx-auto"
       >
         יש לכם עוד שאלות? אנחנו כאן לעזור - פנו לצוות שלנו לקבלת סיוע אישי.
       </MotionP>

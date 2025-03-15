@@ -35,14 +35,14 @@ const ContactUs: React.FC = () => {
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
-        className="text-3xl md:text-4xl font-bold text-center mb-2 shimmer-text"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2 shimmer-text"
       >
         צרו קשר
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
-        className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
+        className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
         שאלות, הזדמנויות לשיתוף פעולה, או הצעות? צרו איתנו קשר.
       </MotionP>
@@ -63,8 +63,8 @@ const ContactUs: React.FC = () => {
               <div className="mb-4 rounded-full w-16 h-16 flex items-center justify-center bg-freelo-dark-purple/50 glass-panel">
                 {method.icon}
               </div>
-              <h3 className="text-xl font-bold mb-1">{method.title}</h3>
-              <p className="text-gray-300 text-center">{method.value}</p>
+              <h3 className="text-lg sm:text-xl font-bold mb-1">{method.title}</h3>
+              <p className="text-xs sm:text-sm text-gray-300 text-center">{method.value}</p>
             </a>
           ))}
         </div>

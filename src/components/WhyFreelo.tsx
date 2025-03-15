@@ -32,14 +32,14 @@ const WhyFreelo: React.FC = () => {
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
-        className="text-3xl md:text-4xl font-bold text-center mb-2"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2"
       >
-        למה להצטרף ל<span className="shimmer-text">פרילו</span>?
+        למה להצטרף ל<span className="shimmer-text">Freelo</span>?
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
-        className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
+        className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
         הפלטפורמה שמחברת אותך לקהילה ולאירועים שמתאימים לרצונות שלך
       </MotionP>
@@ -54,8 +54,8 @@ const WhyFreelo: React.FC = () => {
             <div className="mb-4 rounded-full w-20 h-20 flex items-center justify-center bg-freelo-dark-purple/50 glass-panel">
               {feature.icon}
             </div>
-            <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-            <p className="text-gray-300">{feature.description}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-3">{feature.title}</h3>
+            <p className="text-sm sm:text-base text-gray-300">{feature.description}</p>
           </MotionDiv>
         ))}
       </div>

@@ -40,14 +40,14 @@ const Hero: React.FC = () => {
       
       <MotionH1 
         variants={fadeIn('up', 0.4)}
-        className="text-5xl md:text-6xl font-bold text-center mb-6 max-w-3xl"
+        className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-6 max-w-3xl"
       >
         <span className="text-freelo-bright-pink">כל</span> <span className="text-[#ff56a9]">אירועי</span> <span className="text-freelo-soft-purple">הקהילה</span> <span className="text-white">במקום אחד</span>
       </MotionH1>
       
       <MotionP 
         variants={fadeIn('up', 0.5)}
-        className="text-xl text-center text-gray-300 mb-10 max-w-2xl leading-relaxed"
+        className="text-base sm:text-lg md:text-xl text-center text-gray-300 mb-10 max-w-2xl leading-relaxed"
       >
         Freelo מרכזת עבורכם את כל האירועים מהקהילות הא-מונוגמיות, בדס״מ, סווינגרס והמיניות האלטרנטיבית – מסיבות במועדונים ועד סדנאות ומפגשים אינטימיים.
       </MotionP>
@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full">
           <button 
             type="submit" 
-            className="freelo-button h-12 px-6 py-2 whitespace-nowrap"
+            className="freelo-button h-12 px-6 py-2 whitespace-nowrap text-sm sm:text-base"
             disabled={isLoading}
           >
             {isLoading ? 'נרשם...' : 'הירשמו עכשיו'}
@@ -67,7 +67,7 @@ const Hero: React.FC = () => {
           <Input
             type="email"
             placeholder="הכניסו את האימייל שלכם"
-            className="h-12 rounded-full bg-white/10 border-white/20 text-white placeholder:text-gray-400 text-right"
+            className="h-12 rounded-full bg-white/10 border-white/20 text-white placeholder:text-gray-400 text-right text-sm sm:text-base"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required

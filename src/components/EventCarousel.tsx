@@ -49,14 +49,14 @@ const EventCarousel: React.FC = () => {
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
-        className="text-3xl md:text-4xl font-bold text-center mb-2"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2"
       >
         גלו <span className="shimmer-text">אירועים</span> עבורכם
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
-        className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
+        className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
         אנו אוצרים מגוון רחב של האירועים המרגשים ביותר בקהילה
       </MotionP>
@@ -70,8 +70,8 @@ const EventCarousel: React.FC = () => {
           
           <div className="h-full flex items-center justify-center p-6">
             <div className="text-center">
-              <h3 className="text-3xl font-bold shimmer-text mb-4">{events[currentIndex]}</h3>
-              <p className="text-gray-300 max-w-lg mx-auto">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold shimmer-text mb-4">{events[currentIndex]}</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-lg mx-auto">
                 התחברו עם אנשים בעלי תפיסות דומות בסביבה בטוחה ומכילה.
               </p>
             </div>

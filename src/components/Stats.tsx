@@ -32,14 +32,14 @@ const Stats: React.FC = () => {
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
-        className="text-3xl md:text-4xl font-bold text-center mb-2"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2"
       >
         ה<span className="shimmer-text">מספרים</span> שלנו
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
-        className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
+        className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
         אלפי חיבורים שכבר נוצרו דרך הרשת שלנו
       </MotionP>
@@ -54,8 +54,8 @@ const Stats: React.FC = () => {
             <div className="mb-4 rounded-full w-20 h-20 flex items-center justify-center bg-freelo-dark-purple/50 glass-panel">
               {stat.icon}
             </div>
-            <h3 className="text-4xl font-bold mb-1 shimmer-text">{stat.value}</h3>
-            <p className="text-gray-300">{stat.label}</p>
+            <h3 className="text-3xl sm:text-4xl font-bold mb-1 shimmer-text">{stat.value}</h3>
+            <p className="text-sm sm:text-base text-gray-300">{stat.label}</p>
           </MotionDiv>
         ))}
       </div>

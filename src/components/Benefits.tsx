@@ -47,16 +47,16 @@ const Benefits: React.FC = () => {
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
-        className="text-3xl md:text-4xl font-bold text-center mb-2"
+        className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2"
       >
         יתרונות <span className="shimmer-text">מרכזיים</span>
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
-        className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
+        className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        גלו מה הופך את פרילו לפלטפורמה האולטימטיבית לאירועים אלטרנטיביים
+        גלו מה הופך את Freelo לפלטפורמה האולטימטיבית לאירועים אלטרנטיביים
       </MotionP>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -70,8 +70,8 @@ const Benefits: React.FC = () => {
               {benefit.icon}
             </div>
             <div className="text-right">
-              <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-              <p className="text-gray-300 text-sm">{benefit.description}</p>
+              <h3 className="text-base sm:text-lg font-bold mb-2">{benefit.title}</h3>
+              <p className="text-xs sm:text-sm text-gray-300">{benefit.description}</p>
             </div>
           </MotionDiv>
         ))}
