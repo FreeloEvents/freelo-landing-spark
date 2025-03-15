@@ -7,13 +7,13 @@ const ContactUs: React.FC = () => {
   const contactMethods = [
     {
       icon: <MessageCircle className="w-8 h-8 text-freelo-soft-purple" />,
-      title: "Telegram",
+      title: "טלגרם",
       value: "ENMeventsIL",
       link: "https://t.me/ENMeventsisrael"
     },
     {
       icon: <Mail className="w-8 h-8 text-freelo-bright-pink" />,
-      title: "Email",
+      title: "אימייל",
       value: "enmisraelevents@gmail.com",
       link: "mailto:enmisraelevents@gmail.com"
     }
@@ -31,14 +31,14 @@ const ContactUs: React.FC = () => {
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-2 shimmer-text"
       >
-        Get In Touch
+        צרו קשר
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
         className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        Questions, partnership opportunities, or suggestions? Reach out to us.
+        שאלות, הזדמנויות לשיתוף פעולה, או הצעות? צרו איתנו קשר.
       </MotionP>
       
       <MotionDiv

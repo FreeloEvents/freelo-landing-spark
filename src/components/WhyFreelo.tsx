@@ -7,18 +7,18 @@ const WhyFreelo: React.FC = () => {
   const features = [
     {
       icon: <Search className="w-10 h-10 text-freelo-bright-pink" />,
-      title: "Advanced Event Discovery",
-      description: "Find events that perfectly match your interests and preferences."
+      title: "גילוי אירועים מתקדם",
+      description: "מצאו אירועים שמתאימים בדיוק לתחומי העניין וההעדפות שלכם."
     },
     {
       icon: <Users className="w-10 h-10 text-freelo-soft-purple" />,
-      title: "Community Memberships",
-      description: "Connect with like-minded individuals in exclusive communities."
+      title: "חברות בקהילה",
+      description: "התחברו עם אנשים בעלי תפיסות דומות בקהילות בלעדיות."
     },
     {
       icon: <Calendar className="w-10 h-10 text-freelo-bright-pink" />,
-      title: "Comprehensive Event Calendar",
-      description: "Parties, workshops, meetups, and more all in one place."
+      title: "לוח אירועים מקיף",
+      description: "מסיבות, סדנאות, מפגשים ועוד - הכל במקום אחד."
     }
   ];
 
@@ -34,14 +34,14 @@ const WhyFreelo: React.FC = () => {
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-2"
       >
-        Why join <span className="shimmer-text">Freelo</span>?
+        למה להצטרף ל<span className="shimmer-text">פרילו</span>?
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
         className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        The platform that connects you to the community and events that match your desires
+        הפלטפורמה שמחברת אותך לקהילה ולאירועים שמתאימים לרצונות שלך
       </MotionP>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">

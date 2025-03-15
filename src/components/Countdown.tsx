@@ -51,7 +51,7 @@ const Countdown: React.FC = () => {
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-12"
       >
-        Launching in
+        משיקים בעוד
       </MotionH2>
 
       <MotionDiv
@@ -59,10 +59,10 @@ const Countdown: React.FC = () => {
         className="flex flex-wrap justify-center gap-4 sm:gap-8"
       >
         {[
-          { value: timeLeft.days, label: 'Days' },
-          { value: timeLeft.hours, label: 'Hours' },
-          { value: timeLeft.minutes, label: 'Minutes' },
-          { value: timeLeft.seconds, label: 'Seconds' },
+          { value: timeLeft.days, label: 'ימים' },
+          { value: timeLeft.hours, label: 'שעות' },
+          { value: timeLeft.minutes, label: 'דקות' },
+          { value: timeLeft.seconds, label: 'שניות' },
         ].map((item, index) => (
           <div
             key={index}
@@ -79,7 +79,7 @@ const Countdown: React.FC = () => {
         variants={fadeIn('up', 0.4)}
         className="text-center text-gray-300 mt-8"
       >
-        Join our waitlist today to get exclusive early access.
+        הצטרפו לרשימת ההמתנה שלנו היום כדי לקבל גישה מוקדמת בלעדית.
       </MotionP>
     </MotionDiv>
   );

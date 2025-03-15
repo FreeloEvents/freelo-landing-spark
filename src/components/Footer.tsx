@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-between mb-8">
           <div className="flex items-center mb-6 md:mb-0">
             <Logo size={60} />
-            <span className="text-2xl font-bold ml-2 shimmer-text">Freelo</span>
+            <span className="text-2xl font-bold mr-2 shimmer-text">פרילו</span>
           </div>
           
           <div className="flex space-x-4">
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
           variants={fadeIn('up', 0.3)}
           className="text-center text-gray-400 text-sm"
         >
-          &copy; Freelo {new Date().getFullYear()}. All rights reserved.
+          &copy; פרילו {new Date().getFullYear()}. כל הזכויות שמורות.
         </MotionP>
       </div>
     </MotionDiv>

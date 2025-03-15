@@ -90,8 +90,33 @@
   }
 
   body {
-    @apply bg-freelo-dark-purple text-freelo-light-text;
+    @apply bg-freelo-dark-purple text-freelo-light-text font-sans;
     scroll-behavior: smooth;
+  }
+
+  /* RTL Specific Styles */
+  [dir="rtl"] .sm\:flex-row {
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .mr-4 {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+
+  [dir="rtl"] .ml-2 {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+
+  [dir="rtl"] .ml-1 {
+    margin-left: 0;
+    margin-right: 0.25rem;
+  }
+
+  [dir="rtl"] .mr-1 {
+    margin-right: 0;
+    margin-left: 0.25rem;
   }
 
   /* Scrollbar Styling */

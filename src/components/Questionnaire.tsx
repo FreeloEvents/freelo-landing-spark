@@ -14,66 +14,66 @@ const Questionnaire: React.FC = () => {
   const questions: Question[] = [
     {
       id: 1,
-      text: "What type of events interest you the most?",
+      text: "איזה סוג אירועים מעניינים אותך במיוחד?",
       options: [
-        "Large parties (festivals, club nights)",
-        "Intimate gatherings (groups under 20 participants)",
-        "Workshops for education and exploration",
-        "BDSM-focused events (play parties, workshops, etc.)",
-        "Community meetups (picnics, socials)",
-        "Online events (webinars, virtual meetups)",
-        "Other"
+        "מסיבות גדולות (פסטיבלים, אירועי מועדונים)",
+        "מפגשים אינטימיים (קבוצות עד 20 משתתפים)",
+        "סדנאות לחינוך וחקירה",
+        "אירועים ממוקדי BDSM (מסיבות משחק, סדנאות, וכו')",
+        "מפגשי קהילה (פיקניקים, אירועים חברתיים)",
+        "אירועים מקוונים (וובינרים, מפגשים וירטואליים)",
+        "אחר"
       ]
     },
     {
       id: 2,
-      text: "What's most important to you when looking for an event?",
+      text: "מה הכי חשוב לך כשאת/ה מחפש/ת אירוע?",
       options: [
-        "High privacy and discretion",
-        "Clear consent and safety protocols",
-        "Creating new connections and community",
-        "Convenient location",
-        "Event theme and quality of experience",
-        "Fair pricing",
-        "Other"
+        "פרטיות ודיסקרטיות גבוהה",
+        "פרוטוקולי הסכמה ובטיחות ברורים",
+        "יצירת קשרים חדשים וקהילה",
+        "מיקום נוח",
+        "נושא האירוע ואיכות החוויה",
+        "תמחור הוגן",
+        "אחר"
       ]
     },
     {
       id: 3,
-      text: "How often do you attend events like these?",
+      text: "באיזו תדירות את/ה משתתף/ת באירועים כאלה?",
       options: [
-        "Weekly",
-        "Monthly",
-        "A few times a year",
-        "Only large/special events (festivals)",
-        "Never yet, but excited to start",
-        "Other"
+        "מדי שבוע",
+        "מדי חודש",
+        "מספר פעמים בשנה",
+        "רק אירועים גדולים/מיוחדים (פסטיבלים)",
+        "עדיין לא, אבל מתרגש/ת להתחיל",
+        "אחר"
       ]
     },
     {
       id: 4,
-      text: "What information is most important to know before an event?",
+      text: "איזה מידע הכי חשוב לדעת לפני אירוע?",
       options: [
-        "Attendee demographics",
-        "Event structure and activities",
-        "Who's organizing and their reputation",
-        "What's included in the ticket price",
-        "Dress code and behavior expectations",
-        "Whether the event is LGBTQ+ inclusive",
-        "Other"
+        "דמוגרפיה של המשתתפים",
+        "מבנה האירוע והפעילויות",
+        "מי מארגן ומה המוניטין שלהם",
+        "מה כלול במחיר הכרטיס",
+        "קוד לבוש וציפיות התנהגות",
+        "האם האירוע מכיל LGBTQ+",
+        "אחר"
       ]
     },
     {
       id: 5,
-      text: "What makes you feel most comfortable and safe at these events?",
+      text: "מה גורם לך להרגיש הכי בנוח ובטוח באירועים כאלה?",
       options: [
-        "Vetted attendees and organizers",
-        "Clear rules and consent protocols",
-        "Ability to connect with others beforehand",
-        "Professional security and supervision",
-        "Positive reviews from past attendees",
-        "No photos/videos policy",
-        "Other"
+        "משתתפים ומארגנים מאומתים",
+        "כללים ופרוטוקולי הסכמה ברורים",
+        "יכולת להתחבר עם אחרים מראש",
+        "אבטחה מקצועית ופיקוח",
+        "ביקורות חיוביות ממשתתפים קודמים",
+        "מדיניות ללא תמונות/וידאו",
+        "אחר"
       ]
     }
   ];
@@ -121,14 +121,14 @@ const Questionnaire: React.FC = () => {
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-2"
       >
-        Find Your Perfect <span className="shimmer-text">Events</span>
+        מצאו את האירועים ה<span className="shimmer-text">מושלמים</span> עבורכם
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
         className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        Answer a few quick questions to help us customize your event recommendations
+        ענו על מספר שאלות קצרות כדי לעזור לנו להתאים את המלצות האירועים שלכם
       </MotionP>
       
       <MotionDiv
@@ -150,7 +150,7 @@ const Questionnaire: React.FC = () => {
                 ))}
               </div>
               <div className="text-sm text-gray-300">
-                Question {currentQuestion + 1}/{questions.length}
+                שאלה {currentQuestion + 1}/{questions.length}
               </div>
             </div>
             
@@ -163,7 +163,7 @@ const Questionnaire: React.FC = () => {
                 <button
                   key={index}
                   onClick={() => handleOptionSelect(option)}
-                  className={`w-full text-left p-4 rounded-xl transition-all ${
+                  className={`w-full text-right p-4 rounded-xl transition-all ${
                     selectedAnswers[question.id] === option
                       ? 'bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end text-white'
                       : 'bg-white/5 hover:bg-white/10 text-white'
@@ -184,8 +184,8 @@ const Questionnaire: React.FC = () => {
                 }`}
                 disabled={currentQuestion === 0}
               >
-                <ArrowLeft className="w-4 h-4 mr-1" />
-                Previous
+                <ArrowLeft className="w-4 h-4 ml-1" />
+                הקודם
               </button>
               
               <button
@@ -197,8 +197,8 @@ const Questionnaire: React.FC = () => {
                 }`}
                 disabled={!selectedAnswers[question.id]}
               >
-                {isLastQuestion ? 'Finish' : 'Next'}
-                <ArrowRight className="w-4 h-4 ml-1" />
+                {isLastQuestion ? 'סיום' : 'הבא'}
+                <ArrowRight className="w-4 h-4 mr-1" />
               </button>
             </div>
           </div>
@@ -207,15 +207,15 @@ const Questionnaire: React.FC = () => {
             <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/50 backdrop-blur-sm">
               <div className="text-center p-6 rounded-xl">
                 <div className="text-4xl mb-2">🎉</div>
-                <h3 className="text-2xl font-bold mb-2">Thank you!</h3>
+                <h3 className="text-2xl font-bold mb-2">תודה רבה!</h3>
                 <p className="text-gray-300">
-                  Your responses will help us tailor the perfect events for you.
+                  התשובות שלך יעזרו לנו להתאים אירועים מושלמים בשבילך.
                 </p>
                 <button 
                   onClick={() => setShowConfetti(false)}
                   className="mt-4 freelo-button"
                 >
-                  Close
+                  סגור
                 </button>
               </div>
             </div>

@@ -7,33 +7,33 @@ const Benefits: React.FC = () => {
   const benefits = [
     {
       icon: <Shield className="w-8 h-8 text-freelo-bright-pink" />,
-      title: "Verified Safety",
-      description: "All events and organizers are thoroughly vetted for safety and trustworthiness."
+      title: "בטיחות מאומתת",
+      description: "כל האירועים והמארגנים נבדקים ביסודיות לבטיחות ואמינות."
     },
     {
       icon: <ScanSearch className="w-8 h-8 text-freelo-soft-purple" />,
-      title: "Smart Discovery",
-      description: "Our algorithm helps you find events tailored to your specific interests."
+      title: "גילוי חכם",
+      description: "האלגוריתם שלנו עוזר לכם למצוא אירועים המותאמים לתחומי העניין הספציפיים שלכם."
     },
     {
       icon: <Heart className="w-8 h-8 text-freelo-bright-pink" />,
-      title: "Inclusive Community",
-      description: "A welcoming environment for all identities, orientations, and relationship styles."
+      title: "קהילה מכילה",
+      description: "סביבה מזמינה לכל הזהויות, האוריינטציות וסגנונות היחסים."
     },
     {
       icon: <Globe className="w-8 h-8 text-freelo-soft-purple" />,
-      title: "Worldwide Events",
-      description: "Access to local and international events across major cities."
+      title: "אירועים בכל העולם",
+      description: "גישה לאירועים מקומיים ובינלאומיים בערים מרכזיות."
     },
     {
       icon: <Lock className="w-8 h-8 text-freelo-bright-pink" />,
-      title: "Privacy Focused",
-      description: "Your personal information remains secure and never shared without permission."
+      title: "מיקוד בפרטיות",
+      description: "המידע האישי שלכם נשאר מאובטח ולעולם לא משותף ללא הרשאה."
     },
     {
       icon: <Clock className="w-8 h-8 text-freelo-soft-purple" />,
-      title: "Real-time Updates",
-      description: "Instant notifications about new events matching your preferences."
+      title: "עדכונים בזמן אמת",
+      description: "התראות מיידיות על אירועים חדשים התואמים את ההעדפות שלכם."
     }
   ];
 
@@ -49,14 +49,14 @@ const Benefits: React.FC = () => {
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-2"
       >
-        Key <span className="shimmer-text">Benefits</span>
+        יתרונות <span className="shimmer-text">מרכזיים</span>
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
         className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        Discover what makes Freelo the ultimate platform for alternative events
+        גלו מה הופך את פרילו לפלטפורמה האולטימטיבית לאירועים אלטרנטיביים
       </MotionP>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -66,10 +66,10 @@ const Benefits: React.FC = () => {
             variants={fadeIn('up', 0.3 + index * 0.1)}
             className="freelo-card flex items-start"
           >
-            <div className="mr-4 p-3 rounded-lg bg-freelo-dark-purple/50 glass-panel">
+            <div className="ml-4 p-3 rounded-lg bg-freelo-dark-purple/50 glass-panel">
               {benefit.icon}
             </div>
-            <div>
+            <div className="text-right">
               <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
               <p className="text-gray-300 text-sm">{benefit.description}</p>
             </div>

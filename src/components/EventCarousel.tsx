@@ -5,14 +5,14 @@ import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
 
 const EventCarousel: React.FC = () => {
   const events = [
-    "Swinger Parties",
-    "BDSM Play Parties",
-    "Orgies",
-    "Polyamory Meetups",
-    "Sex-Positive Festivals",
-    "Tantra Workshops",
-    "Kink Education Events",
-    "Private Home Gatherings"
+    "מסיבות סווינגרים",
+    "מסיבות BDSM",
+    "אורגיות",
+    "מפגשי פוליאמוריה",
+    "פסטיבלים מיניים חיוביים",
+    "סדנאות טנטרה",
+    "אירועי חינוך קינקי",
+    "התכנסויות פרטיות"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,14 +51,14 @@ const EventCarousel: React.FC = () => {
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-2"
       >
-        Discover <span className="shimmer-text">Events</span> For You
+        גלו <span className="shimmer-text">אירועים</span> עבורכם
       </MotionH2>
       
       <MotionP
         variants={fadeIn('up', 0.3)}
         className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        We curate a wide variety of the most exciting events in the community
+        אנו אוצרים מגוון רחב של האירועים המרגשים ביותר בקהילה
       </MotionP>
       
       <MotionDiv
@@ -72,7 +72,7 @@ const EventCarousel: React.FC = () => {
             <div className="text-center">
               <h3 className="text-3xl font-bold shimmer-text mb-4">{events[currentIndex]}</h3>
               <p className="text-gray-300 max-w-lg mx-auto">
-                Connect with like-minded individuals in a safe, inclusive environment.
+                התחברו עם אנשים בעלי תפיסות דומות בסביבה בטוחה ומכילה.
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ const EventCarousel: React.FC = () => {
           <button 
             onClick={prevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
-            aria-label="Previous event"
+            aria-label="האירוע הקודם"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -88,7 +88,7 @@ const EventCarousel: React.FC = () => {
           <button 
             onClick={nextSlide}
             className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
-            aria-label="Next event"
+            aria-label="האירוע הבא"
           >
             <ArrowRight className="w-5 h-5" />
           </button>
@@ -104,7 +104,7 @@ const EventCarousel: React.FC = () => {
                 className={`w-2 h-2 rounded-full transition-all ${
                   index === currentIndex ? 'bg-freelo-bright-pink w-4' : 'bg-white/30'
                 }`}
-                aria-label={`Go to event ${index + 1}`}
+                aria-label={`עבור לאירוע ${index + 1}`}
               />
             ))}
           </div>
