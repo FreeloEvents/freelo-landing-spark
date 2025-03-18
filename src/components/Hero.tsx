@@ -56,7 +56,14 @@ const Hero: React.FC = () => {
         variants={fadeIn('up', 0.6)}
         className="w-full max-w-md"
       >
-        <form onSubmit={handleSubmit} className="flex flex-row-reverse gap-3 w-full">
+        <form onSubmit={handleSubmit} className="flex gap-3 w-full">
+          <button 
+            type="submit" 
+            className="freelo-button h-12 px-6 py-2 whitespace-nowrap text-sm sm:text-base"
+            disabled={isLoading}
+          >
+            {isLoading ? 'נרשם...' : 'הירשמו עכשיו'}
+          </button>
           <Input
             type="email"
             placeholder="הכניסו את האימייל שלכם"
@@ -65,13 +72,6 @@ const Hero: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button 
-            type="submit" 
-            className="freelo-button h-12 px-6 py-2 whitespace-nowrap text-sm sm:text-base"
-            disabled={isLoading}
-          >
-            {isLoading ? 'נרשם...' : 'הירשמו עכשיו'}
-          </button>
         </form>
         <p className="text-center text-xs text-gray-400 mt-2">
           הנתונים שלכם נשמרים לצורכי גישה מוקדמת
