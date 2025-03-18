@@ -46,7 +46,8 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="relative overflow-hidden bg-freelo-dark-purple"
+        className="relative overflow-hidden bg-gradient-to-b from-[#1A0B2E] to-[#27123A]"
+        dir="rtl"
       >
         <div className="max-w-7xl mx-auto">
           <Hero />

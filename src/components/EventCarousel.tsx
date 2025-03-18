@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
 
 const EventCarousel: React.FC = () => {
@@ -87,22 +87,26 @@ const EventCarousel: React.FC = () => {
     
     if (autoplay) {
       interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % (events.length - visibleCards + 1));
+        // In RTL, we should move from left to right (previous in LTR context)
+        setCurrentIndex((prevIndex) => 
+          prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+        );
       }, 3000);
     }
     
     return () => clearInterval(interval);
   }, [autoplay, events.length, visibleCards]);
 
+  // For RTL, next and prev are flipped
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex >= events.length - visibleCards ? 0 : prevIndex + 1
+      prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+      prevIndex >= events.length - visibleCards ? 0 : prevIndex + 1
     );
   };
 
@@ -111,13 +115,13 @@ const EventCarousel: React.FC = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      className="py-16 px-4"
+      className="py-16 px-4 bg-freelo-dark-purple"
     >
       <MotionH2
         variants={fadeIn('up', 0.2)}
         className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2"
       >
-        גלו <span className="shimmer-text">אירועים</span> עבורכם
+        גלו <span className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent">אירועים</span> עבורכם
       </MotionH2>
       
       <MotionP
@@ -129,7 +133,7 @@ const EventCarousel: React.FC = () => {
       
       <MotionDiv
         variants={fadeIn('up', 0.4)}
-        className="relative max-w-6xl mx-auto px-4"
+        className="relative max-w-6xl mx-auto px-4 dir-rtl"
         onMouseEnter={() => setAutoplay(false)}
         onMouseLeave={() => setAutoplay(true)}
         ref={carouselRef}
@@ -137,7 +141,7 @@ const EventCarousel: React.FC = () => {
         <div className="overflow-hidden">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(${currentIndex * (100 / visibleCards)}%)` }}
+            style={{ transform: `translateX(${-currentIndex * (100 / visibleCards)}%)` }}
           >
             {events.map((event, index) => (
               <div 
@@ -148,7 +152,9 @@ const EventCarousel: React.FC = () => {
                 <div className="h-64 bg-freelo-dark-purple rounded-2xl border border-white/10 overflow-hidden hover:border-freelo-bright-pink/40 transition-all duration-300">
                   <div className="h-full flex items-center justify-center p-6">
                     <div className="text-center">
-                      <h3 className="text-xl sm:text-2xl font-bold shimmer-text mb-4">{event.title}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent mb-4">
+                        {event.title}
+                      </h3>
                       <p className="text-xs sm:text-sm text-gray-300 max-w-lg mx-auto">
                         {event.description}
                       </p>
@@ -161,19 +167,19 @@ const EventCarousel: React.FC = () => {
         </div>
         
         <button 
-          onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
-          aria-label="האירוע הקודם"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </button>
-        
-        <button 
           onClick={nextSlide}
           className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
           aria-label="האירוע הבא"
         >
-          <ArrowRight className="w-5 h-5" />
+          <ChevronRight className="w-5 h-5" />
+        </button>
+        
+        <button 
+          onClick={prevSlide}
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
+          aria-label="האירוע הקודם"
+        >
+          <ChevronLeft className="w-5 h-5" />
         </button>
         
         <div className="flex justify-center gap-2 mt-4">

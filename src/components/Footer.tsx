@@ -13,10 +13,10 @@ const Footer: React.FC = () => {
       className="pt-8 pb-6 px-4 border-t border-white/10"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8">
+        <div className="flex flex-col md:flex-row-reverse items-center justify-between mb-8">
           <div className="flex items-center mb-6 md:mb-0">
             <Logo size={60} />
-            <span className="text-xl sm:text-2xl font-bold mr-2 shimmer-text">Freelo</span>
+            <span className="text-xl sm:text-2xl font-bold mr-2 bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent">Freelo</span>
           </div>
           
           <div className="flex space-x-4">

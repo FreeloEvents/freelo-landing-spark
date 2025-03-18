@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn, staggerContainer } from './motion';
 import ConfettiEffect from './ConfettiEffect';
 
@@ -144,7 +144,7 @@ const Questionnaire: React.FC = () => {
         variants={fadeIn('up', 0.2)}
         className="text-3xl md:text-4xl font-bold text-center mb-2"
       >
-        מצאו את האירועים ה<span className="shimmer-text">מושלמים</span> עבורכם
+        מצאו את האירועים ה<span className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent">מושלמים</span> עבורכם
       </MotionH2>
       
       <MotionP
@@ -161,6 +161,9 @@ const Questionnaire: React.FC = () => {
         <div className="freelo-card relative overflow-hidden">
           <div className="pb-8">
             <div className="flex justify-between items-center mb-6">
+              <div className="text-sm text-gray-300">
+                שאלה {currentQuestion + 1}/{questions.length}
+              </div>
               <div className="flex space-x-1">
                 {questions.map((_, index) => (
                   <div 
@@ -171,9 +174,6 @@ const Questionnaire: React.FC = () => {
                     }`}
                   />
                 ))}
-              </div>
-              <div className="text-sm text-gray-300">
-                שאלה {currentQuestion + 1}/{questions.length}
               </div>
             </div>
             
@@ -192,7 +192,8 @@ const Questionnaire: React.FC = () => {
                       : 'bg-white/5 hover:bg-white/10 text-white'
                   }`}
                 >
-                  <div className={`w-5 h-5 mr-3 rounded-sm border flex items-center justify-center ${
+                  <span className="flex-grow">{option}</span>
+                  <div className={`w-5 h-5 ml-3 rounded-sm border flex items-center justify-center ${
                     isOptionSelected(option) 
                       ? 'bg-white border-white' 
                       : 'border-gray-400'
@@ -203,7 +204,6 @@ const Questionnaire: React.FC = () => {
                       </svg>
                     )}
                   </div>
-                  <span className="flex-grow">{option}</span>
                 </button>
               ))}
             </div>
@@ -214,19 +214,6 @@ const Questionnaire: React.FC = () => {
             
             <div className="flex justify-between mt-8">
               <button
-                onClick={handlePrevious}
-                className={`flex items-center px-4 py-2 rounded-full ${
-                  currentQuestion === 0
-                    ? 'text-gray-500 cursor-not-allowed'
-                    : 'text-white hover:bg-white/10'
-                }`}
-                disabled={currentQuestion === 0}
-              >
-                <ArrowLeft className="w-4 h-4 ml-1" />
-                הקודם
-              </button>
-              
-              <button
                 onClick={handleNext}
                 className={`flex items-center px-4 py-2 rounded-full ${
                   hasSelectedOptions()
@@ -236,7 +223,20 @@ const Questionnaire: React.FC = () => {
                 disabled={!hasSelectedOptions()}
               >
                 {isLastQuestion ? 'סיום' : 'הבא'}
-                <ArrowRight className="w-4 h-4 mr-1" />
+                <ChevronLeft className="w-4 h-4 mr-1" />
+              </button>
+              
+              <button
+                onClick={handlePrevious}
+                className={`flex items-center px-4 py-2 rounded-full ${
+                  currentQuestion === 0
+                    ? 'text-gray-500 cursor-not-allowed'
+                    : 'text-white hover:bg-white/10'
+                }`}
+                disabled={currentQuestion === 0}
+              >
+                <ChevronRight className="w-4 h-4 ml-1" />
+                הקודם
               </button>
             </div>
           </div>

@@ -40,9 +40,9 @@ const Hero: React.FC = () => {
       
       <MotionH1 
         variants={fadeIn('up', 0.4)}
-        className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-6 max-w-3xl"
+        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 max-w-3xl"
       >
-        <span className="text-freelo-bright-pink">כל</span> <span className="text-[#ff56a9]">אירועי</span> <span className="text-freelo-soft-purple">הקהילה</span> <span className="text-white">במקום אחד</span>
+        <span className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent">כל אירועי הקהילה במקום אחד</span>
       </MotionH1>
       
       <MotionP 
@@ -56,14 +56,7 @@ const Hero: React.FC = () => {
         variants={fadeIn('up', 0.6)}
         className="w-full max-w-md"
       >
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full">
-          <button 
-            type="submit" 
-            className="freelo-button h-12 px-6 py-2 whitespace-nowrap text-sm sm:text-base"
-            disabled={isLoading}
-          >
-            {isLoading ? 'נרשם...' : 'הירשמו עכשיו'}
-          </button>
+        <form onSubmit={handleSubmit} className="flex flex-row-reverse gap-3 w-full">
           <Input
             type="email"
             placeholder="הכניסו את האימייל שלכם"
@@ -72,6 +65,13 @@ const Hero: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          <button 
+            type="submit" 
+            className="freelo-button h-12 px-6 py-2 whitespace-nowrap text-sm sm:text-base"
+            disabled={isLoading}
+          >
+            {isLoading ? 'נרשם...' : 'הירשמו עכשיו'}
+          </button>
         </form>
         <p className="text-center text-xs text-gray-400 mt-2">
           הנתונים שלכם נשמרים לצורכי גישה מוקדמת
