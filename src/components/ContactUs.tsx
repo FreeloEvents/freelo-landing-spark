@@ -9,7 +9,7 @@ const ContactUs: React.FC = () => {
       icon: <MessageCircle className="w-8 h-8 text-freelo-soft-purple" />,
       title: "טלגרם",
       value: "ENMeventsIL",
-      link: "https://t.me/ENMeventsisrael"
+      link: "https://t.me/ENMeventsIL"
     },
     {
       icon: <Phone className="w-8 h-8 text-freelo-bright-pink" />,

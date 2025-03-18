@@ -26,7 +26,7 @@ const CommunitySection: React.FC = () => {
       
       <MotionA
         variants={fadeIn('up', 0.4)}
-        href="https://t.me/ENMeventsisrael"
+        href="https://t.me/ENMeventsIL"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block freelo-button text-sm sm:text-base"

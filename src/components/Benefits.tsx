@@ -1,39 +1,24 @@
 
 import React from 'react';
-import { Shield, Heart, Globe, Clock, Lock, ScanSearch } from 'lucide-react';
+import { ScanSearch, Globe, Lock } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn, staggerContainer } from './motion';
 
 const Benefits: React.FC = () => {
   const benefits = [
-    {
-      icon: <Shield className="w-8 h-8 text-freelo-bright-pink" />,
-      title: "בטיחות מאומתת",
-      description: "כל האירועים והמארגנים נבדקים ביסודיות לבטיחות ואמינות."
-    },
     {
       icon: <ScanSearch className="w-8 h-8 text-freelo-soft-purple" />,
       title: "גילוי חכם",
       description: "האלגוריתם שלנו עוזר לכם למצוא אירועים המותאמים לתחומי העניין הספציפיים שלכם."
     },
     {
-      icon: <Heart className="w-8 h-8 text-freelo-bright-pink" />,
-      title: "קהילה מכילה",
-      description: "סביבה מזמינה לכל הזהויות, האוריינטציות וסגנונות היחסים."
-    },
-    {
-      icon: <Globe className="w-8 h-8 text-freelo-soft-purple" />,
+      icon: <Globe className="w-8 h-8 text-freelo-bright-pink" />,
       title: "אירועים בכל העולם",
       description: "גישה לאירועים מקומיים ובינלאומיים בערים מרכזיות."
     },
     {
-      icon: <Lock className="w-8 h-8 text-freelo-bright-pink" />,
+      icon: <Lock className="w-8 h-8 text-freelo-soft-purple" />,
       title: "מיקוד בפרטיות",
       description: "המידע האישי שלכם נשאר מאובטח ולעולם לא משותף ללא הרשאה."
-    },
-    {
-      icon: <Clock className="w-8 h-8 text-freelo-soft-purple" />,
-      title: "עדכונים בזמן אמת",
-      description: "התראות מיידיות על אירועים חדשים התואמים את ההעדפות שלכם."
     }
   ];
 
@@ -59,7 +44,7 @@ const Benefits: React.FC = () => {
         גלו מה הופך את Freelo לפלטפורמה האולטימטיבית לאירועים אלטרנטיביים
       </MotionP>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {benefits.map((benefit, index) => (
           <MotionDiv
             key={index}
