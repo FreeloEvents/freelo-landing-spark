@@ -9,6 +9,7 @@ import Stats from '@/components/Stats';
 import EventCarousel from '@/components/EventCarousel';
 import Questionnaire from '@/components/Questionnaire';
 import Benefits from '@/components/Benefits';
+import AboutUs from '@/components/AboutUs';
 import FAQ from '@/components/FAQ';
 import ContactUs from '@/components/ContactUs';
 import Footer from '@/components/Footer';
@@ -56,6 +57,7 @@ const Index = () => {
           <EventCarousel />
           <Questionnaire />
           <Benefits />
+          <AboutUs />
           <FAQ />
           <ContactUs />
           <Footer />
