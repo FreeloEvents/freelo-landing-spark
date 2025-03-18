@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
@@ -10,6 +9,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 const EventCarousel: React.FC = () => {
   const events = [
@@ -80,32 +80,11 @@ const EventCarousel: React.FC = () => {
     }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [autoplay, setAutoplay] = useState(true);
   const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(Array(events.length).fill(false));
+  const [autoplayInterval, setAutoplayInterval] = useState<NodeJS.Timeout | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    
-    if (autoplay) {
-      interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
-      }, 3000);
-    }
-    
-    return () => clearInterval(interval);
-  }, [autoplay, events.length]);
-
-  const nextSlide = () => {
-    setAutoplay(false);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
-  };
-
-  const prevSlide = () => {
-    setAutoplay(false);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + events.length) % events.length);
-  };
-
+  // Handle image loading state
   const handleImageLoad = (index: number) => {
     const newImagesLoaded = [...imagesLoaded];
     newImagesLoaded[index] = true;
@@ -135,66 +114,83 @@ const EventCarousel: React.FC = () => {
       
       <MotionDiv
         variants={fadeIn('up', 0.4)}
-        className="relative max-w-4xl mx-auto px-4"
+        className="w-full max-w-5xl mx-auto"
       >
-        <div className="absolute inset-0 bg-freelo-card-bg rounded-2xl border border-white/10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end opacity-10" />
-          
-          <div className="h-full flex items-center justify-center p-6">
-            <div className="text-center w-full">
-              <div className="mb-4 relative h-40 sm:h-48 md:h-56 w-full overflow-hidden rounded-xl">
-                {!imagesLoaded[currentIndex] && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Skeleton className="h-full w-full bg-white/5" />
-                  </div>
-                )}
-                <img 
-                  src={events[currentIndex].image} 
-                  alt={events[currentIndex].title} 
-                  className={`object-cover w-full h-full transition-opacity duration-300 ${imagesLoaded[currentIndex] ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() => handleImageLoad(currentIndex)}
-                />
-              </div>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold shimmer-text mb-4">
-                {events[currentIndex].title}
-              </h3>
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-lg mx-auto">
-                {events[currentIndex].description}
-              </p>
-            </div>
-          </div>
-          
-          <button 
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
-            aria-label="האירוע הקודם"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-          
-          <button 
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
-            aria-label="האירוע הבא"
-          >
-            <ArrowRight className="w-5 h-5" />
-          </button>
-          
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-            {events.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setAutoplay(false);
-                  setCurrentIndex(index);
-                }}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'bg-freelo-bright-pink w-4' : 'bg-white/30'
-                }`}
-                aria-label={`עבור לאירוע ${index + 1}`}
-              />
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+          }}
+          className="w-full"
+          onMouseEnter={() => {
+            if (autoplayInterval) {
+              clearInterval(autoplayInterval);
+              setAutoplayInterval(null);
+            }
+          }}
+          onMouseLeave={() => {
+            if (!autoplayInterval) {
+              const interval = setInterval(() => {
+                setActiveIndex((prev) => (prev + 1) % events.length);
+              }, 3000);
+              setAutoplayInterval(interval);
+            }
+          }}
+        >
+          <CarouselContent>
+            {events.map((event, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Card className="bg-freelo-card-bg border border-white/10 overflow-hidden h-full">
+                    <CardContent className="flex flex-col p-6 h-full">
+                      <div className="relative aspect-[3/2] overflow-hidden rounded-lg mb-4">
+                        {!imagesLoaded[index] && (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <Skeleton className="h-full w-full bg-white/5" />
+                          </div>
+                        )}
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          className={`w-full h-full object-cover transition-opacity duration-300 ${
+                            imagesLoaded[index] ? 'opacity-100' : 'opacity-0'
+                          }`}
+                          onLoad={() => handleImageLoad(index)}
+                          onError={(e) => {
+                            console.error(`Failed to load image for ${event.title}`);
+                            // Fallback image if needed
+                            e.currentTarget.src = "https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
+                            handleImageLoad(index);
+                          }}
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold shimmer-text mb-2">{event.title}</h3>
+                      <p className="text-sm text-gray-300">{event.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
             ))}
+          </CarouselContent>
+          <div className="absolute -left-4 top-1/2 -translate-y-1/2 z-10">
+            <CarouselPrevious className="bg-white/10 hover:bg-white/20 border-white/20" />
           </div>
+          <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-10">
+            <CarouselNext className="bg-white/10 hover:bg-white/20 border-white/20" />
+          </div>
+        </Carousel>
+        
+        <div className="flex justify-center gap-2 mt-6">
+          {events.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all ${
+                index === activeIndex ? 'bg-freelo-bright-pink w-4' : 'bg-white/30'
+              }`}
+              aria-label={`עבור לאירוע ${index + 1}`}
+            />
+          ))}
         </div>
       </MotionDiv>
     </MotionDiv>
