@@ -87,22 +87,27 @@ const EventCarousel: React.FC = () => {
     
     if (autoplay) {
       interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % (events.length - visibleCards + 1));
+        // For RTL, we need to go backward in the array to appear moving forward
+        setCurrentIndex((prevIndex) => 
+          prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+        );
       }, 3000);
     }
     
     return () => clearInterval(interval);
   }, [autoplay, events.length, visibleCards]);
 
+  // In RTL, "next" means going left (decreasing index)
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex >= events.length - visibleCards ? 0 : prevIndex + 1
+      prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
     );
   };
 
+  // In RTL, "previous" means going right (increasing index)
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+      prevIndex >= events.length - visibleCards ? 0 : prevIndex + 1
     );
   };
 
@@ -137,7 +142,7 @@ const EventCarousel: React.FC = () => {
         <div className="overflow-hidden">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(${currentIndex * (100 / visibleCards)}%)` }}
+            style={{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }}
           >
             {events.map((event, index) => (
               <div 
@@ -160,18 +165,19 @@ const EventCarousel: React.FC = () => {
           </div>
         </div>
         
+        {/* In RTL, the buttons and arrow icons are flipped */}
         <button 
-          onClick={prevSlide}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
-          aria-label="האירוע הקודם"
+          onClick={nextSlide}
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
+          aria-label="האירוע הבא"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
         
         <button 
-          onClick={nextSlide}
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
-          aria-label="האירוע הבא"
+          onClick={prevSlide}
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
+          aria-label="האירוע הקודם"
         >
           <ArrowRight className="w-5 h-5" />
         </button>
