@@ -1,94 +1,43 @@
 
 import React, { useState, useEffect } from 'react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
-import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
 
 const EventCarousel: React.FC = () => {
   const events = [
-    {
-      title: "מסיבות BDSM",
-      description: "התחברו עם אנשים בעלי תפיסות דומות בסביבה בטוחה ומכילה.",
-      image: "/lovable-uploads/1a6546ac-b049-4d2d-ac1b-3a98be71f26d.png"
-    },
-    {
-      title: "מסיבות פטיש",
-      description: "חקרו את העולם המרתק של פטישים בסביבה פתוחה ומקבלת.",
-      image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "מסיבות ליברליות",
-      description: "הצטרפו למפגשים חברתיים עם אנשים פתוחים ושוברי מוסכמות.",
-      image: "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "מסיבות סווינגרס",
-      description: "גלו מרחב בטוח לזוגות המעוניינים לחקור ולהרחיב את גבולותיהם.",
-      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "אורגיות",
-      description: "אירועים אינטימיים המאפשרים ביטוי עצמי ומיני באווירה מכבדת.",
-      image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "מאנצ'ים",
-      description: "מפגשים חברתיים לא-מיניים לשיתוף ידע ודיון בקהילת ה-BDSM.",
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "מפגשי פולי",
-      description: "קהילה תומכת לאנשים המקיימים מערכות יחסים פוליאמוריות.",
-      image: "https://images.unsplash.com/photo-1522543558187-768b6df7c25c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "כירבוליות",
-      description: "מפגשי כירבול המספקים מרחב בטוח למגע לא-מיני והרפיה.",
-      image: "https://images.unsplash.com/photo-1516914589923-f105f1535f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "סדנאות",
-      description: "למדו מיומנויות ותרגלו בסביבה תומכת תחת הדרכה מקצועית.",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "סדנאות טנטרה לזוגות",
-      description: "גלו את עומק החיבור האינטימי דרך פרקטיקות עתיקות.",
-      image: "https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "הופעות",
-      description: "צפו באמנות אלטרנטיבית מרהיבה וחוויות בימתיות ייחודיות.",
-      image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "פסטיבלים",
-      description: "השתתפו באירועים רב-יומיים של חגיגה, למידה והתחברות.",
-      image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      title: "תערוכות",
-      description: "צפו בעבודות אמנות שחוקרות את המיניות ואת הגוף בדרכים חדשניות.",
-      image: "https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
+    "מסיבות סווינגרים",
+    "מסיבות BDSM",
+    "אורגיות",
+    "מפגשי פוליאמוריה",
+    "פסטיבלים מיניים חיוביים",
+    "סדנאות טנטרה",
+    "אירועי חינוך קינקי",
+    "התכנסויות פרטיות"
   ];
 
-  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(Array(events.length).fill(false));
-  const [autoplayInterval, setAutoplayInterval] = useState<NodeJS.Timeout | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
 
-  // Handle image loading state
-  const handleImageLoad = (index: number) => {
-    const newImagesLoaded = [...imagesLoaded];
-    newImagesLoaded[index] = true;
-    setImagesLoaded(newImagesLoaded);
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    
+    if (autoplay) {
+      interval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
+      }, 3000);
+    }
+    
+    return () => clearInterval(interval);
+  }, [autoplay, events.length]);
+
+  const nextSlide = () => {
+    setAutoplay(false);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
+  };
+
+  const prevSlide = () => {
+    setAutoplay(false);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + events.length) % events.length);
   };
 
   return (
@@ -114,83 +63,51 @@ const EventCarousel: React.FC = () => {
       
       <MotionDiv
         variants={fadeIn('up', 0.4)}
-        className="w-full max-w-5xl mx-auto"
+        className="relative max-w-3xl mx-auto h-64 px-4"
       >
-        <Carousel
-          opts={{
-            align: "center",
-            loop: true,
-          }}
-          className="w-full"
-          onMouseEnter={() => {
-            if (autoplayInterval) {
-              clearInterval(autoplayInterval);
-              setAutoplayInterval(null);
-            }
-          }}
-          onMouseLeave={() => {
-            if (!autoplayInterval) {
-              const interval = setInterval(() => {
-                setActiveIndex((prev) => (prev + 1) % events.length);
-              }, 3000);
-              setAutoplayInterval(interval);
-            }
-          }}
-        >
-          <CarouselContent>
-            {events.map((event, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card className="bg-freelo-card-bg border border-white/10 overflow-hidden h-full">
-                    <CardContent className="flex flex-col p-6 h-full">
-                      <div className="relative aspect-[3/2] overflow-hidden rounded-lg mb-4">
-                        {!imagesLoaded[index] && (
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <Skeleton className="h-full w-full bg-white/5" />
-                          </div>
-                        )}
-                        <img
-                          src={event.image}
-                          alt={event.title}
-                          className={`w-full h-full object-cover transition-opacity duration-300 ${
-                            imagesLoaded[index] ? 'opacity-100' : 'opacity-0'
-                          }`}
-                          onLoad={() => handleImageLoad(index)}
-                          onError={(e) => {
-                            console.error(`Failed to load image for ${event.title}`);
-                            // Fallback image if needed
-                            e.currentTarget.src = "https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80";
-                            handleImageLoad(index);
-                          }}
-                        />
-                      </div>
-                      <h3 className="text-xl font-bold shimmer-text mb-2">{event.title}</h3>
-                      <p className="text-sm text-gray-300">{event.description}</p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
+        <div className="absolute inset-0 bg-freelo-card-bg rounded-2xl border border-white/10 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end opacity-10" />
+          
+          <div className="h-full flex items-center justify-center p-6">
+            <div className="text-center">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold shimmer-text mb-4">{events[currentIndex]}</h3>
+              <p className="text-xs sm:text-sm md:text-base text-gray-300 max-w-lg mx-auto">
+                התחברו עם אנשים בעלי תפיסות דומות בסביבה בטוחה ומכילה.
+              </p>
+            </div>
+          </div>
+          
+          <button 
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
+            aria-label="האירוע הקודם"
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+          
+          <button 
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all"
+            aria-label="האירוע הבא"
+          >
+            <ArrowRight className="w-5 h-5" />
+          </button>
+          
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+            {events.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setAutoplay(false);
+                  setCurrentIndex(index);
+                }}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex ? 'bg-freelo-bright-pink w-4' : 'bg-white/30'
+                }`}
+                aria-label={`עבור לאירוע ${index + 1}`}
+              />
             ))}
-          </CarouselContent>
-          <div className="absolute -left-4 top-1/2 -translate-y-1/2 z-10">
-            <CarouselPrevious className="bg-white/10 hover:bg-white/20 border-white/20" />
           </div>
-          <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-10">
-            <CarouselNext className="bg-white/10 hover:bg-white/20 border-white/20" />
-          </div>
-        </Carousel>
-        
-        <div className="flex justify-center gap-2 mt-6">
-          {events.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === activeIndex ? 'bg-freelo-bright-pink w-4' : 'bg-white/30'
-              }`}
-              aria-label={`עבור לאירוע ${index + 1}`}
-            />
-          ))}
         </div>
       </MotionDiv>
     </MotionDiv>
