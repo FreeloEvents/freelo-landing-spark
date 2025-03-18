@@ -2,6 +2,14 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
+import { Skeleton } from '@/components/ui/skeleton';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
 
 const EventCarousel: React.FC = () => {
   const events = [
@@ -74,6 +82,7 @@ const EventCarousel: React.FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean[]>(Array(events.length).fill(false));
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -95,6 +104,12 @@ const EventCarousel: React.FC = () => {
   const prevSlide = () => {
     setAutoplay(false);
     setCurrentIndex((prevIndex) => (prevIndex - 1 + events.length) % events.length);
+  };
+
+  const handleImageLoad = (index: number) => {
+    const newImagesLoaded = [...imagesLoaded];
+    newImagesLoaded[index] = true;
+    setImagesLoaded(newImagesLoaded);
   };
 
   return (
@@ -126,12 +141,18 @@ const EventCarousel: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end opacity-10" />
           
           <div className="h-full flex items-center justify-center p-6">
-            <div className="text-center">
-              <div className="mb-4 relative h-40 w-full overflow-hidden rounded-xl">
+            <div className="text-center w-full">
+              <div className="mb-4 relative h-40 sm:h-48 md:h-56 w-full overflow-hidden rounded-xl">
+                {!imagesLoaded[currentIndex] && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Skeleton className="h-full w-full bg-white/5" />
+                  </div>
+                )}
                 <img 
                   src={events[currentIndex].image} 
                   alt={events[currentIndex].title} 
-                  className="object-cover w-full h-full"
+                  className={`object-cover w-full h-full transition-opacity duration-300 ${imagesLoaded[currentIndex] ? 'opacity-100' : 'opacity-0'}`}
+                  onLoad={() => handleImageLoad(currentIndex)}
                 />
               </div>
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold shimmer-text mb-4">
