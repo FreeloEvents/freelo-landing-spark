@@ -2,13 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel";
 
 const EventCarousel: React.FC = () => {
   const events = [
