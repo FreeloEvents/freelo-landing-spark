@@ -5,19 +5,58 @@ import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
 
 const EventCarousel: React.FC = () => {
   const events = [
-    "מסיבות פטיש",
-    "מסיבות ליברליות",
-    "מסיבות סווינגרס",
-    "אורגיות",
-    "מסיבות BDSM",
-    "מאנצ'ים",
-    "מפגשי פולי",
-    "כירבוליות",
-    "סדנאות",
-    "זוגות סדנאות טנטרה",
-    "הופעות",
-    "פסטיבלים",
-    "תערוכות"
+    {
+      title: "מסיבות פטיש",
+      description: "חקרו את עולם הפטישים עם אנשים בעלי תשוקות דומות בסביבה בטוחה ומכבדת"
+    },
+    {
+      title: "מסיבות ליברליות",
+      description: "הצטרפו לאירועים ליברליים עם אווירה פתוחה וקהילה תומכת ללא שיפוטיות"
+    },
+    {
+      title: "מסיבות סווינגרס",
+      description: "גלו עולם של חופש זוגי וחוויות משותפות במפגשים דיסקרטיים ומכבדים"
+    },
+    {
+      title: "אורגיות",
+      description: "השתתפו במפגשים אינטימיים קבוצתיים בסביבה בטוחה עם כללים ברורים"
+    },
+    {
+      title: "מסיבות BDSM",
+      description: "חוו מפגשי BDSM עם דגש על הסכמה, בטיחות והנאה הדדית בקהילה תומכת"
+    },
+    {
+      title: "מאנצ'ים",
+      description: "פגשו את קהילת ה-BDSM במפגשים חברתיים לא-מיניים לשיחה, למידה וחיבור"
+    },
+    {
+      title: "מפגשי פולי",
+      description: "התחברו עם קהילת הפולי לתמיכה, שיתוף חוויות, ולמידה על מערכות יחסים מרובות"
+    },
+    {
+      title: "כירבוליות",
+      description: "השתתפו במפגשי מגע לא-מיני ואינטימיות גופנית בסביבה בטוחה ומכילה"
+    },
+    {
+      title: "סדנאות",
+      description: "למדו כישורים חדשים בתחומי מיניות, תקשורת, ואינטימיות ממדריכים מנוסים"
+    },
+    {
+      title: "סדנאות טנטרה לזוגות",
+      description: "העמיקו את החיבור הזוגי דרך תרגול טנטרה ועבודה על אינטימיות ומיניות"
+    },
+    {
+      title: "הופעות",
+      description: "צפו במופעים ייחודיים בנושאי מיניות אלטרנטיבית, אמנות גוף וביטוי עצמי"
+    },
+    {
+      title: "פסטיבלים",
+      description: "חגגו עם הקהילה באירועים גדולים המשלבים מוזיקה, אמנות ותרבות אלטרנטיבית"
+    },
+    {
+      title: "תערוכות",
+      description: "בקרו בתערוכות אמנות העוסקות במיניות, זהות, וביטוי עצמי בגישה פתוחה"
+    }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -106,14 +145,12 @@ const EventCarousel: React.FC = () => {
                 className={`flex-shrink-0 px-2`}
                 style={{ width: `${100 / visibleCards}%` }}
               >
-                <div className="h-64 bg-freelo-card-bg rounded-2xl border border-white/10 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end opacity-10" />
-                  
+                <div className="h-64 bg-freelo-dark-purple rounded-2xl border border-white/10 overflow-hidden hover:border-freelo-bright-pink/40 transition-all duration-300">
                   <div className="h-full flex items-center justify-center p-6">
                     <div className="text-center">
-                      <h3 className="text-xl sm:text-2xl font-bold shimmer-text mb-4">{event}</h3>
+                      <h3 className="text-xl sm:text-2xl font-bold shimmer-text mb-4">{event.title}</h3>
                       <p className="text-xs sm:text-sm text-gray-300 max-w-lg mx-auto">
-                        התחברו עם אנשים בעלי תפיסות דומות בסביבה בטוחה ומכילה
+                        {event.description}
                       </p>
                     </div>
                   </div>
