@@ -77,33 +77,33 @@ const EventCarousel: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-    useEffect(() => {
-        let interval: NodeJS.Timeout;
-
-        if (autoplay) {
-            interval = setInterval(() => {
-                // In RTL, we should move from left to right (previous in LTR context)
-                setCurrentIndex((prevIndex) =>
-                    prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
-                );
-            }, 3000);
-        }
-
-        return () => clearInterval(interval);
-    }, [autoplay, events.length, visibleCards]);
-
-    // For RTL, next and prev are flipped
-    const nextSlide = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    
+    if (autoplay) {
+      interval = setInterval(() => {
+        // In RTL, we should move from left to right (previous in LTR context)
+        setCurrentIndex((prevIndex) => 
+          prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
         );
-    };
+      }, 3000);
+    }
+    
+    return () => clearInterval(interval);
+  }, [autoplay, events.length, visibleCards]);
 
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex >= events.length - visibleCards ? 0 : prevIndex + 1
-        );
-    };
+  // For RTL, next and prev are flipped
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex >= events.length - visibleCards ? 0 : prevIndex + 1
+    );
+  };
 
   return (
     <MotionDiv
@@ -178,7 +178,7 @@ const EventCarousel: React.FC = () => {
         </button>
         
         <div className="flex justify-center gap-2 mt-4">
-          {Array.from({ length: events.length - visibleCards + 1 }).map((_, index) => (
+          {Array.from({ length: events.length - visibleCards }).map((_, index) => (
             <button
               key={index}
               onClick={() => {
