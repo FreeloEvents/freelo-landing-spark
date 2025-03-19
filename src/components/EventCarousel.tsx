@@ -95,13 +95,13 @@ const EventCarousel: React.FC = () => {
   // For RTL, next and prev are flipped
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex <= 0 ? events.length - numVisibleCards : prevIndex - 1
+      prevIndex >= events.length - numVisibleCards ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex >= events.length - numVisibleCards ? 0 : prevIndex + 1
+      prevIndex <= 0 ? events.length - numVisibleCards : prevIndex - 1
     );
   };
 
