@@ -151,7 +151,7 @@ const Questionnaire: React.FC = () => {
         variants={fadeIn('up', 0.3)}
         className="text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        ענו על מספר שאלות קצרות כדי לעזור לנו להתאים את המלצות האירועים שלכם
+        ענו על כמה שאלות קצרות כדי שנוכל להכיר אתכם טוב יותר ולהציע אירועים מדויקים לכם
       </MotionP>
       
       <MotionDiv

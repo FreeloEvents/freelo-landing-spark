@@ -44,7 +44,7 @@ const ContactUs: React.FC = () => {
         variants={fadeIn('up', 0.3)}
         className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        שאלות, הזדמנויות לשיתוף פעולה, או הצעות? צרו איתנו קשר.
+        לשאלות נוספות, הצעות לשיתוף פעולה או השקעה – אנחנו זמינות תמיד ונשמח לשמוע מכם!
       </MotionP>
       
       <MotionDiv

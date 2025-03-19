@@ -41,7 +41,7 @@ const WhyFreelo: React.FC = () => {
         variants={fadeIn('up', 0.3)}
         className="text-sm sm:text-base md:text-lg text-gray-300 text-center mx-auto max-w-2xl mb-12"
       >
-        הפלטפורמה שמחברת אותך לקהילה ולאירועים שמתאימים לרצונות שלך
+        הפלטפורמה שמחברת אתכם לקהילה ולאירועים שהכי מתאימים לכם
       </MotionP>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
