@@ -59,10 +59,10 @@ const Countdown: React.FC = () => {
         className="flex flex-wrap justify-center gap-4 sm:gap-8"
       >
         {[
-          { value: timeLeft.days, label: 'ימים' },
-          { value: timeLeft.hours, label: 'שעות' },
-          { value: timeLeft.minutes, label: 'דקות' },
           { value: timeLeft.seconds, label: 'שניות' },
+          { value: timeLeft.minutes, label: 'דקות' },
+          { value: timeLeft.hours, label: 'שעות' },
+          { value: timeLeft.days, label: 'ימים' },
         ].map((item, index) => (
           <div
             key={index}
