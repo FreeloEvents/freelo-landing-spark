@@ -4,23 +4,58 @@ import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
 import Logo from './Logo';
 import { MotionDiv, MotionH1, MotionP, MotionSpan, fadeIn, staggerContainer } from './motion';
+import { supabase } from '@/integrations/supabase/client';
 
 const Hero: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API request
-    setTimeout(() => {
-      toast.success('תודה שנרשמת!', {
-        description: 'נעדכן אותך בחדשות של Freelo.',
+    try {
+      // Check if email is valid
+      if (!email || !email.includes('@')) {
+        toast.error('אימייל לא תקין', {
+          description: 'נא להזין כתובת אימייל תקינה',
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      // Insert email into Supabase
+      const { error } = await supabase
+        .from('Email Adresses')
+        .insert([{ 'Email Adress': email }]);
+
+      if (error) {
+        console.error('Error inserting email:', error);
+        
+        // Check if it's a duplicate email error
+        if (error.code === '23505') {
+          toast.info('תודה!', {
+            description: 'אימייל זה כבר רשום במערכת שלנו',
+          });
+        } else {
+          toast.error('שגיאה בהרשמה', {
+            description: 'אנא נסו שוב מאוחר יותר',
+          });
+        }
+      } else {
+        toast.success('תודה שנרשמת!', {
+          description: 'נעדכן אותך בחדשות של Freelo.',
+        });
+        setEmail('');
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
+      toast.error('שגיאה בהרשמה', {
+        description: 'אנא נסו שוב מאוחר יותר',
       });
-      setEmail('');
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
