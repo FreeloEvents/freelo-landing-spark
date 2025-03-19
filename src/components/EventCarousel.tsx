@@ -178,14 +178,14 @@ const EventCarousel: React.FC = () => {
         </button>
         
         <div className="flex justify-center gap-2 mt-4">
-          {Array.from({ length: events.length - visibleCards }).map((_, index) => (
+          {Array.from({ length: events.length - visibleCards + 1 }).map((_, index) => (
             <button
               key={index}
               onClick={() => {
                 setCurrentIndex(index);
               }}
               className={`w-2 h-2 rounded-full transition-all ${
-                index === currentIndex ? 'bg-freelo-bright-pink w-4' : 'bg-white/30'
+                index === currentIndex ? 'bg-freelo-bright-pink w-6' : 'bg-white/30'
               }`}
               aria-label={`עבור לאירוע ${index + 1}`}
             />
