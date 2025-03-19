@@ -59,18 +59,18 @@ const EventCarousel: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   
   // Calculate how many cards to show at once based on screen size
-  const getVisibleCards = () => {
+  const getNumVisibleCards = () => {
     if (typeof window !== 'undefined') {
       return window.innerWidth < 640 ? 1 : window.innerWidth < 768 ? 2 : 3;
     }
     return 3; // Default for SSR
   };
   
-  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
+  const [numVisibleCards, setNumVisibleCards] = useState(getNumVisibleCards());
   
   useEffect(() => {
     const handleResize = () => {
-      setVisibleCards(getVisibleCards());
+      setNumVisibleCards(getNumVisibleCards());
     };
     
     window.addEventListener('resize', handleResize);
@@ -84,24 +84,24 @@ const EventCarousel: React.FC = () => {
       interval = setInterval(() => {
         // In RTL, we should move from left to right (previous in LTR context)
         setCurrentIndex((prevIndex) => 
-          prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+          prevIndex <= 0 ? events.length - numVisibleCards : prevIndex - 1
         );
       }, 3000);
     }
     
     return () => clearInterval(interval);
-  }, [autoplay, events.length, visibleCards]);
+  }, [autoplay, events.length, numVisibleCards]);
 
   // For RTL, next and prev are flipped
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex <= 0 ? events.length - visibleCards : prevIndex - 1
+      prevIndex <= 0 ? events.length - numVisibleCards : prevIndex - 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex >= events.length - visibleCards ? 0 : prevIndex + 1
+      prevIndex >= events.length - numVisibleCards ? 0 : prevIndex + 1
     );
   };
 
@@ -136,7 +136,7 @@ const EventCarousel: React.FC = () => {
         <div className="overflow-hidden">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(${-currentIndex * (100 / visibleCards)}%)` }}
+            style={{ transform: `translateX(${-currentIndex * (100 / numVisibleCards)}%)` }}
           >
 
 
@@ -145,7 +145,7 @@ const EventCarousel: React.FC = () => {
               <div 
                 key={index}
                 className={`flex-shrink-0 px-2`}
-                style={{ width: `${100 / visibleCards}%` }}
+                style={{ width: `${100 / numVisibleCards}%` }}
               >
                 <div className="h-64 bg-freelo-dark-purple rounded-2xl border border-white/10 overflow-hidden hover:border-freelo-bright-pink/40 transition-all duration-300">
                   <div className="h-full flex items-center justify-center p-6">
@@ -185,7 +185,7 @@ const EventCarousel: React.FC = () => {
         </button>
         
         <div className="flex justify-center gap-2 mt-4">
-          {Array.from({ length: events.length - visibleCards + 1 }).map((_, index) => (
+          {Array.from({ length: events.length - numVisibleCards + 1 }).map((_, index) => (
             <button
               key={index}
               onClick={() => {
