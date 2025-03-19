@@ -5,50 +5,62 @@ import { MotionDiv, MotionH2, MotionP, fadeIn } from './motion';
 const EventCarousel: React.FC = () => {
   const events = [
     {
+      id: 0,
       title: "מסיבות פטיש",
       description: "חקרו את עולם הפטיש והקינק באירועים עם אווירה בטוחה, פתוחה ומכבדת"
     },
     {
+      id: 1,
       title: "מסיבות סווינגרס",
       description: "בואו לחוות חופש זוגי במפגשים דיסקרטיים ומכילים, עם אנשים בעלי ראש פתוח"
     },
     {
+      id: 2,
       title: "אורגיות",
       description: "אירועים קבוצתיים אינטימיים ובטוחים, עם כללי הסכמה ברורים והקפדה על פרטיות"
     },
     {
+      id: 3,
       title: "סדנאות",
       description: "סדנאות מקצועיות לחקירה מינית, תקשורת זוגית, התפתחות אישית ועוד"
     },
     {
+      id: 4,
       title: "הופעות",
       description: "אירועים מיוחדים עם מופעי אמנות וביטוי עצמי בנושאי מיניות אלטרנטיבית"
     },
     {
+      id: 5,
       title: "מסיבות BDSM",
       description: "חוו מפגשי BDSM עם דגש על הסכמה, בטיחות והנאה הדדית בקהילה תומכת"
     },
     {
+      id: 6,
       title: "מאנצ'ים",
       description: "פגשו את קהילת ה-BDSM במפגשים חברתיים לא-מיניים לשיחה, למידה וחיבור"
     },
     {
+      id: 7,
       title: "מפגשי פולי",
       description: "התחברו עם קהילת הפולי לתמיכה, שיתוף חוויות, ולמידה על מערכות יחסים מרובות"
     },
     {
+      id: 8,
       title: "כירבוליות",
       description: "השתתפו במפגשי מגע לא-מיני ואינטימיות גופנית בסביבה בטוחה ומכילה"
     },
     {
+      id: 9,
       title: "סדנאות טנטרה לזוגות",
       description: "העמיקו את החיבור הזוגי דרך תרגול טנטרה ועבודה על אינטימיות ומיניות"
     },
     {
+      id: 10,
       title: "פסטיבלים",
       description: "חגגו עם הקהילה באירועים גדולים המשלבים מוזיקה, אמנות ותרבות אלטרנטיבית"
     },
     {
+      id: 11,
       title: "תערוכות",
       description: "בקרו בתערוכות אמנות העוסקות במיניות, זהות, וביטוי עצמי בגישה פתוחה"
     }
@@ -57,7 +69,7 @@ const EventCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
-  
+
   // Calculate how many cards to show at once based on screen size
   const getNumVisibleCards = () => {
     if (typeof window !== 'undefined') {
@@ -65,42 +77,42 @@ const EventCarousel: React.FC = () => {
     }
     return 3; // Default for SSR
   };
-  
+
   const [numVisibleCards, setNumVisibleCards] = useState(getNumVisibleCards());
-  
+
   useEffect(() => {
     const handleResize = () => {
       setNumVisibleCards(getNumVisibleCards());
     };
-    
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
-    
+
     if (autoplay) {
       interval = setInterval(() => {
         // In RTL, we should move from left to right (previous in LTR context)
-        setCurrentIndex((prevIndex) => 
+        setCurrentIndex((prevIndex) =>
           prevIndex <= 0 ? events.length - numVisibleCards : prevIndex - 1
         );
       }, 3000);
     }
-    
+
     return () => clearInterval(interval);
   }, [autoplay, events.length, numVisibleCards]);
 
   // For RTL, next and prev are flipped
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex >= events.length - numVisibleCards ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex <= 0 ? events.length - numVisibleCards : prevIndex - 1
     );
   };
@@ -134,7 +146,7 @@ const EventCarousel: React.FC = () => {
         ref={carouselRef}
       >
         <div className="overflow-hidden">
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(${-currentIndex * (100 / numVisibleCards)}%)` }}
           >
@@ -142,7 +154,7 @@ const EventCarousel: React.FC = () => {
 
 
             {events.map((event, index) => (
-              <div 
+              <div
                 key={index}
                 className={`flex-shrink-0 px-2`}
                 style={{ width: `${100 / numVisibleCards}%` }}
@@ -167,34 +179,33 @@ const EventCarousel: React.FC = () => {
 
           </div>
         </div>
-        
-        <button 
+
+        <button
           onClick={nextSlide}
           className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
           aria-label="האירוע הבא"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
-        
-        <button 
+
+        <button
           onClick={prevSlide}
           className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all z-10"
           aria-label="האירוע הקודם"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
-        
+
         <div className="flex justify-center gap-2 mt-4">
-          {Array.from({ length: events.length - numVisibleCards + 1 }).map((_, index) => (
+          {Array.from({ length: events.length - numVisibleCards + 1 }).reverse().map((_, index, arr) => (
             <button
               key={index}
               onClick={() => {
-                setCurrentIndex(index);
+                setCurrentIndex(arr.length - 1 - index);
               }}
-              className={`w-2 h-2 rounded-full transition-all ${
-                index === currentIndex ? 'bg-freelo-bright-pink w-6' : 'bg-white/30'
-              }`}
-              aria-label={`עבור לאירוע ${index + 1}`}
+              className={`w-2 h-2 rounded-full transition-all ${(arr.length - 1 - index) === currentIndex ? 'bg-freelo-bright-pink w-6' : 'bg-white/30'
+                }`}
+              aria-label={`עבור לאירוע ${arr.length - index}`}
             />
           ))}
         </div>
