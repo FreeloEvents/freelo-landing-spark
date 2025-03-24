@@ -8,7 +8,6 @@ import CommunitySection from '@/components/CommunitySection';
 import Stats from '@/components/Stats';
 import EventCarousel from '@/components/EventCarousel';
 import Questionnaire from '@/components/Questionnaire';
-import Benefits from '@/components/Benefits';
 import AboutUs from '@/components/AboutUs';
 import FAQ from '@/components/FAQ';
 import ContactUs from '@/components/ContactUs';
@@ -57,7 +56,6 @@ const Index = () => {
           <Stats />
           <EventCarousel />
           <Questionnaire />
-          <Benefits />
           <AboutUs />
           <FAQ />
           <ContactUs />
