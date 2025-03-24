@@ -50,15 +50,15 @@ const Index = () => {
       >
         <div className="max-w-7xl mx-auto">
           <Hero />
-          <Countdown />
-          <WhyFreelo />
-          <CommunitySection />
-          <Stats />
-          <EventCarousel />
-          <Questionnaire />
-          <AboutUs />
-          <FAQ />
-          <ContactUs />
+          <section className="section-alt-1"><Countdown /></section>
+          <section className="section-alt-2"><WhyFreelo /></section>
+          <section className="section-alt-1"><CommunitySection /></section>
+          <section className="section-alt-2"><Stats /></section>
+          <section className="section-alt-1"><EventCarousel /></section>
+          <section className="section-alt-2"><Questionnaire /></section>
+          <section className="section-alt-1"><AboutUs /></section>
+          <section className="section-alt-2"><FAQ /></section>
+          <section className="section-alt-1"><ContactUs /></section>
           <Footer />
         </div>
       </motion.div>

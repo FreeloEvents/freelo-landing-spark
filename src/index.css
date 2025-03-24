@@ -121,6 +121,42 @@
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(to bottom, #D91141, #C1295F);
   }
+  
+  /* Section Alternating Backgrounds */
+  .section-alt-1 {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .section-alt-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(138, 43, 226, 0.05), rgba(217, 17, 65, 0.05));
+    backdrop-filter: blur(100px);
+    z-index: -1;
+    border-radius: 0;
+  }
+  
+  .section-alt-2 {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .section-alt-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(26, 11, 46, 0.3);
+    z-index: -1;
+    border-radius: 0;
+  }
 }
 
 @layer components {
