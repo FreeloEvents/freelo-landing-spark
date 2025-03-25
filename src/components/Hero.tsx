@@ -77,21 +77,21 @@ const Hero: React.FC = () => {
         variants={fadeIn('up', 0.4)}
         className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 max-w-3xl"
       >
-        <span className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent">כל האירועים האלטרנטיביים</span> <span className="text-white">במקום אחד</span>
+        <MotionSpan 
+          className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent font-extrabold"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          Freelo
+        </MotionSpan>{" "}
+        <span className="text-white">– כל מה שקורה היום</span>
       </MotionH1>
       
       <MotionP 
         variants={fadeIn('up', 0.5)}
-        className="text-base sm:text-lg md:text-xl text-center text-gray-300 mb-6 max-w-2xl leading-relaxed"
+        className="text-base sm:text-lg md:text-xl text-center text-gray-300 mb-10 max-w-2xl leading-relaxed"
       >
-        Freelo מרכזת עבורכם את האירועים המובילים מהקהילות הא-מונוגמיות, הסווינגרס, BDSM והמיניות האלטרנטיבית – ממסיבות גדולות ועד למפגשים אינטימיים וסדנאות חקירה והתפתחות.
-      </MotionP>
-      
-      <MotionP 
-        variants={fadeIn('up', 0.5)}
-        className="text-base sm:text-lg text-center text-gray-300 mb-10 max-w-2xl leading-relaxed"
-      >
-        הצטרפו כבר היום וקבלו גישה מוקדמת ובלעדית לפלטפורמה שמחברת אתכם לכל אירוע שתרצו.
+        גלה אירועים דיסקרטיים וקהילתיים שמתאימים בדיוק לך
       </MotionP>
       
       <MotionDiv 
