@@ -64,23 +64,12 @@ const Countdown: React.FC = () => {
         className="flex justify-center mb-8"
       >
         <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-1 sm:gap-2">
-          {/* Days */}
+          {/* Seconds */}
           <div className="text-center">
             <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
-              {formatNumber(timeLeft.days)}
+              {formatNumber(timeLeft.seconds)}
             </div>
-            <div className="text-xs uppercase mt-1 text-gray-400">ימים</div>
-          </div>
-          
-          {/* Separator */}
-          <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink mx-1 sm:mx-2">:</div>
-          
-          {/* Hours */}
-          <div className="text-center">
-            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
-              {formatNumber(timeLeft.hours)}
-            </div>
-            <div className="text-xs uppercase mt-1 text-gray-400">שעות</div>
+            <div className="text-xs uppercase mt-1 text-gray-400">שניות</div>
           </div>
           
           {/* Separator */}
@@ -97,12 +86,23 @@ const Countdown: React.FC = () => {
           {/* Separator */}
           <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink mx-1 sm:mx-2">:</div>
           
-          {/* Seconds */}
+          {/* Hours */}
           <div className="text-center">
             <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
-              {formatNumber(timeLeft.seconds)}
+              {formatNumber(timeLeft.hours)}
             </div>
-            <div className="text-xs uppercase mt-1 text-gray-400">שניות</div>
+            <div className="text-xs uppercase mt-1 text-gray-400">שעות</div>
+          </div>
+          
+          {/* Separator */}
+          <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink mx-1 sm:mx-2">:</div>
+          
+          {/* Days */}
+          <div className="text-center">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
+              {formatNumber(timeLeft.days)}
+            </div>
+            <div className="text-xs uppercase mt-1 text-gray-400">ימים</div>
           </div>
         </div>
       </MotionDiv>
