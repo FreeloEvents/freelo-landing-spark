@@ -71,25 +71,29 @@ const Hero: React.FC = () => {
         className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-r from-freelo-gradient-start to-freelo-gradient-end opacity-20 blur-[80px] top-0 -z-10"
       />
       
-      <Logo className="mb-12" />
+      <Logo className="mb-16" />
       
-      <MotionH1 
-        variants={fadeIn('up', 0.4)}
-        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 max-w-3xl"
-      >
-        <MotionSpan 
-          className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent font-extrabold text-4xl sm:text-5xl md:text-6xl"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
+      <div className="flex flex-col items-center mb-10">
+        <MotionH1 
+          variants={fadeIn('up', 0.4)}
+          className="text-center max-w-3xl mb-4"
         >
-          Freelo
-        </MotionSpan>{" "}
-        <span className="text-white">– הפלטפורמה שלך לאירועים ליברליים ואינטימיים</span>
-      </MotionH1>
+          <MotionSpan 
+            className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent font-extrabold text-5xl sm:text-6xl md:text-7xl block mb-5"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            Freelo
+          </MotionSpan>
+          <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold block">
+            הפלטפורמה שלך לאירועים ליברליים ואינטימיים
+          </span>
+        </MotionH1>
+      </div>
       
       <MotionP 
         variants={fadeIn('up', 0.5)}
-        className="text-base sm:text-lg md:text-xl text-center text-gray-300 mb-10 max-w-2xl leading-relaxed"
+        className="text-lg sm:text-xl md:text-2xl text-center text-gray-300 mb-16 max-w-2xl leading-relaxed font-medium"
       >
         גלה אירועים דיסקרטיים וקהילתיים שמתאימים בדיוק לך
       </MotionP>
@@ -104,7 +108,7 @@ const Hero: React.FC = () => {
             className="freelo-button h-12 px-6 py-2 whitespace-nowrap text-sm sm:text-base"
             disabled={isLoading}
           >
-            {isLoading ? 'נרשם...' : 'קבלו עדכון מיד כשהאתר עולה לאוויר'}
+            {isLoading ? 'נרשם...' : 'לקבלת עדכון בהשקה'}
           </button>
           <Input
             type="email"
