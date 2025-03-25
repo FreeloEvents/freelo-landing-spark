@@ -78,13 +78,13 @@ const Hero: React.FC = () => {
         className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 max-w-3xl"
       >
         <MotionSpan 
-          className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent font-extrabold"
+          className="bg-gradient-to-r from-freelo-bright-pink via-freelo-gradient-mid to-freelo-soft-purple bg-clip-text text-transparent font-extrabold text-4xl sm:text-5xl md:text-6xl"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
           Freelo
         </MotionSpan>{" "}
-        <span className="text-white">– כל מה שקורה היום</span>
+        <span className="text-white">– הפלטפורמה שלך לאירועים ליברליים ואינטימיים</span>
       </MotionH1>
       
       <MotionP 

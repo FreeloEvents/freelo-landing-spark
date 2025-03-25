@@ -40,6 +40,11 @@ const Countdown: React.FC = () => {
     return () => clearInterval(interval);
   }, [targetDate]);
 
+  // Helper function to add leading zeros
+  const formatNumber = (num: number): string => {
+    return num < 10 ? `0${num}` : `${num}`;
+  };
+
   return (
     <MotionDiv
       initial="hidden"
@@ -56,23 +61,50 @@ const Countdown: React.FC = () => {
 
       <MotionDiv
         variants={fadeIn('up', 0.3)}
-        className="flex flex-wrap justify-center gap-4 sm:gap-8"
+        className="flex justify-center mb-8"
       >
-        {[
-          { value: timeLeft.seconds, label: 'שניות' },
-          { value: timeLeft.minutes, label: 'דקות' },
-          { value: timeLeft.hours, label: 'שעות' },
-          { value: timeLeft.days, label: 'ימים' },
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="relative w-20 h-20 sm:w-28 sm:h-28 flex flex-col items-center justify-center bg-freelo-card-bg rounded-2xl border border-white/10"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-freelo-gradient-start to-freelo-gradient-end opacity-20 rounded-2xl" />
-            <span className="text-2xl sm:text-3xl md:text-4xl font-bold relative z-10">{item.value}</span>
-            <span className="text-xs sm:text-sm text-gray-300 relative z-10">{item.label}</span>
+        <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-1 sm:gap-2">
+          {/* Days */}
+          <div className="text-center">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
+              {formatNumber(timeLeft.days)}
+            </div>
+            <div className="text-xs uppercase mt-1 text-gray-400">ימים</div>
           </div>
-        ))}
+          
+          {/* Separator */}
+          <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink mx-1 sm:mx-2">:</div>
+          
+          {/* Hours */}
+          <div className="text-center">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
+              {formatNumber(timeLeft.hours)}
+            </div>
+            <div className="text-xs uppercase mt-1 text-gray-400">שעות</div>
+          </div>
+          
+          {/* Separator */}
+          <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink mx-1 sm:mx-2">:</div>
+          
+          {/* Minutes */}
+          <div className="text-center">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
+              {formatNumber(timeLeft.minutes)}
+            </div>
+            <div className="text-xs uppercase mt-1 text-gray-400">דקות</div>
+          </div>
+          
+          {/* Separator */}
+          <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink mx-1 sm:mx-2">:</div>
+          
+          {/* Seconds */}
+          <div className="text-center">
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-freelo-bright-pink">
+              {formatNumber(timeLeft.seconds)}
+            </div>
+            <div className="text-xs uppercase mt-1 text-gray-400">שניות</div>
+          </div>
+        </div>
       </MotionDiv>
 
       <MotionP
